@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="designProblems/|designpattern/designProblems/chatserver/|designpattern/designProblems/chess/|designpattern/designProblems/copy/|designpattern/designProblems/jukebox/|designpattern/designProblems/parkinlot/|designpattern/designProblems/snakeladder/|designpattern/designProblems/vendingmachine/" kind="src" path="src"/>
+	<classpathentry kind="src" path="Recursion"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.6-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.6-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.6-test-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.6-tests.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.6.jar"/>
+	<classpathentry kind="lib" path="lib/spring-core-3.1.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/dtrules.jar"/>
+	<classpathentry kind="lib" path="lib/opennlp-tools-1.5.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
