@@ -9,7 +9,7 @@ public class CustomPriorityQueue {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		
+		//heap
 		Queue<Book> queue=new PriorityQueue<Book>(10,Collections.reverseOrder());  
 	    //Creating Books  
 	    Book b1=new Book(121,"Let us C","Yashwant Kanetkar","BPB",8);  

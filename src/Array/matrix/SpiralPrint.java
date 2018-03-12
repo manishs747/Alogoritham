@@ -1,6 +1,8 @@
-package Array;
+package Array.matrix;
 
 import java.util.Scanner;
+
+import Array.Utility;
 
 
 

@@ -8,6 +8,20 @@ public class FindDuplicate {
 	
 	
 	
+	
+	//For example, array = {4, 2, 4, 5, 2, 3, 1} and n = 5
+	
+	static void printRepeating(int arr[], int size) 
+    {
+		
+		
+		
+		
+		
+    }
+	
+	
+	
 	//Find the element that appears once
 		//output should be 2
 		public static int getSingleOfDouble(){

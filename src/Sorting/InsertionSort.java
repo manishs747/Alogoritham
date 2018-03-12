@@ -8,7 +8,7 @@ import Array.Utility;
 /*
  * 
 5
-2 4 6 8 3
+3 2 5 4 1
 
 
 2 4 6 8 8 
@@ -33,9 +33,27 @@ public class InsertionSort {
 	         }
 	        // insertIntoSorted(ar,0);
 	       //  Utility.printArray(ar);
-	         insertsort(ar);
+	         insertsortTest(ar);
 
 	}
+	
+	
+	
+	public static void insertsortTest(int[] arr) {
+		
+		for (int i = 1; i < arr.length; i++) {
+			int j = i-1;
+			int current = arr[i];
+			while(j>=0 && arr[j] >  current){
+				arr[j+1] = arr[j--];
+			}
+			arr[j+1] = current;
+			Utility.print(arr);
+		}
+		
+		
+	}
+	
 	
 	public static void insertsort(int[] array) {
 		for (int j = 1; j < array.length; j++) {

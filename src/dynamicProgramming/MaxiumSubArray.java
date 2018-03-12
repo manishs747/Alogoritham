@@ -75,6 +75,21 @@ public class MaxiumSubArray {
 		
 		
 	}
+	
+	
+
+	//dynamic programing  best
+	public static int getMax(int a[]){
+		   int max_so_far = a[0];
+		   int curr_max = a[0];
+		   for (int i = 1; i < a.length; i++)
+		   {
+		        curr_max = Math.max(a[i], curr_max+a[i]);
+		        max_so_far = Math.max(max_so_far, curr_max);
+		        System.out.println("C_ELEMT:"+a[i]+" MAX_CUR:"+curr_max+" MAX_SF:"+max_so_far);
+		   }
+		   return max_so_far;
+	}
 
 	private static void getInputAndCall() {
 		Scanner in = new Scanner(System.in);
@@ -108,18 +123,6 @@ public class MaxiumSubArray {
 	}
 	
 	
-	//dynamic programing
-	public static int getMax(int a[]){
-		   int max_so_far = a[0];
-		   int curr_max = a[0];
-		   for (int i = 1; i < a.length; i++)
-		   {
-		        curr_max = Math.max(a[i], curr_max+a[i]);
-		        max_so_far = Math.max(max_so_far, curr_max);
-		        System.out.println("C_ELEMT:"+a[i]+" MAX_CUR:"+curr_max+" MAX_SF:"+max_so_far);
-		   }
-		   return max_so_far;
-	}
 	
 	public static int getNoncontMaxSubarrayOld(int a[]){
 		int sum = a[0];

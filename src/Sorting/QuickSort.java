@@ -36,6 +36,13 @@ public class QuickSort {
 		return i + 1;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
 	public static void quickSorted(int[] A, int l, int h) {
 		if (l < h) {
 			int p = partioned(A, l, h);

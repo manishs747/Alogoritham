@@ -2,42 +2,28 @@ package Tree;
 
 public class TreeOperation {
 	
-	
 
 	
 	public static  void insert(Node node, int value) {
 		if (node == null) {
 			return;
 		}
-		if (node.data > value) {
+		if (node.data < value) {
+			if (node.right != null) {
+				insert(node.right, value);
+			} else {
+				node.right = new Node(value);
+			}
+		} else if (node.data > value) {
 			if (node.left != null) {
 				insert(node.left, value);
 			} else {
 				node.left = new Node(value);
 			}
-		} else if (node.data < value) {
-			if (node.right != null) {
-				insert(node.right, value);
-			} else {
-				
-				node.right = new Node(value);
-			}
 		}
 	}
 	
-	//insert tree in binary tree structure  //wrong not handled empty case
-	public static NodeT<Integer> insertNode(NodeT<Integer> node, int value) {
-		if (node == null) {
-			node = new NodeT<Integer>(value);
-			return node;
-		}
-		if (node.getData() >= value) {
-			node.left = insertNode(node.left, value);
-		} else if (node.getData() < value) {
-			node.right = insertNode(node.right, value);
-		}
-		return node;
-	}
+
 	
 	
 
