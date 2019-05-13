@@ -5,53 +5,100 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.Vector;
 
 public class Views {
+	
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Node root = TreeUtility.getSampleBinarySearchTree();
-		TreeOperation.insert(root, 8);
+		String s1="1 14 3 7 4 5 15 6 13 10 11 2 12 8 9";
+		String[] words=s1.split("\\s");
+		int [] arr = {2,1,3,6,5,7};
+		Node root = null;
+    	for (String number : words) {
+    		root = BasicOperation.insertRec(root,Integer.parseInt(number));
+		}
+		//Node root = Tree.getSampleBinarySearchTree();
+		//BasicOperation.insert(root, 8);
 		// TreeUtility.printNice(node);
-		 BTreePrinter.printNode(root);
-		 printLeftView(root);
+		// BTreePrinter.printNode(root);
+		/* printLeftView(root);
 		 System.out.println();
 		 printRightView(root);
 		 System.out.println();
 		 printLeafNodes(root);
 		 System.out.println("Bottom View");
-		 bottomView(root);
+		 bottomView(root);*/
+		//printVerticalOrder(root);
+		topView(root);
 	}
 	
 	
 	
 	public static void topView(Node root){
+		Map<Integer,TreeMap<Integer,Integer>> map = new TreeMap<Integer, TreeMap<Integer,Integer>>();
+		topViewUtility(root, 0,0, map);
+		for (int key : map.keySet()) {
+			System.out.print(map.get(key).firstEntry().getValue()+" ");
+		}
 		
-		Map<Integer,Integer> map = new TreeMap<Integer, Integer>();
-		topViewUtility(root, 0, map);
-		printHashMap(map);
 	}
-	
-	public static void topViewUtility(Node root,int hd ,Map<Integer,Integer> map){
+
+	public static void topViewUtility(Node root,int hd, int vd ,Map<Integer,TreeMap<Integer,Integer>> map){
 		if(root == null){
 			return;
 		}
-		if(!map.containsKey(hd)){
-			map.put(hd, root.data);
+		if(!map.containsKey(hd)){  //doesnt contain in map
+			TreeMap<Integer, Integer> tm = new TreeMap<Integer,Integer>();
+			tm.put(vd, root.data);
+			map.put(hd, tm);
+		}else {
+			TreeMap<Integer, Integer> tm = map.get(hd);
+			if (vd < tm.firstKey()) {
+				tm.remove(tm.firstKey());
+				tm.put(vd, root.data);
+				map.put(hd, tm);
+			}
 		}
-		topViewUtility(root.left,hd -1,map);
-		topViewUtility(root.right,hd +1,map);
+		topViewUtility(root.left,hd -1,vd+1,map);
+		topViewUtility(root.right,hd +1,vd+1,map);
+	}
+	
+	
+	//https://www.geeksforgeeks.org/print-binary-tree-vertical-order-set-2/
+	public static void printVerticalOrder(Node root) {
+        TreeMap<Integer,Vector<Integer>> map = new TreeMap<>(); 
+        int hd =0; 
+        getVerticalOrder(root,hd,map);
+        for (Entry<Integer, Vector<Integer>> entry : map.entrySet()) 
+        { 
+            System.out.println(entry.getValue()); 
+        } 
+	}
+	
+	private static void getVerticalOrder(Node root, int hd, TreeMap<Integer, Vector<Integer>> m) {
+		if (root == null) return ;
+		if( m.containsKey(hd)) {
+			m.get(hd).add(root.data);
+		}else {
+			Vector<Integer> list = new Vector<Integer>();
+			list.add(root.data);
+			m.put(hd, list);
+		}
+		getVerticalOrder(root.left, hd-1, m);
+		getVerticalOrder(root.right, hd+1, m);
 
 	}
 	
 	
-	
 	//https://www.geeksforgeeks.org/print-left-view-binary-tree/
 	// 1 2 4 8
-	
 	static void printLeftView(Node root){
 		if(root == null){
 			return;
@@ -169,6 +216,10 @@ public class Views {
 		bottomViewUtils(root.left, hd-1, map);
 		bottomViewUtils(root.right, hd+1, map);
 	}
+	
+	
+
+
 	
 	
 	

@@ -4,7 +4,7 @@ public class Mirror {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 Node root = TreeUtility.getSampleTree();
+		 Node root = Tree.getSampleBinarySearchTree();
 		 //TreeUtility.printNice(root);
 		
 	}

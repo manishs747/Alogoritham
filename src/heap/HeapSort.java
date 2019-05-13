@@ -1,29 +1,27 @@
 package heap;
 
-import java.util.Arrays;
-
 import Array.Utility;
-import LinkList.Node;
 
 public class HeapSort {
-	
-	
+
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
 		int [] arr = { 7,6,3,2,1,5,4};
 		heapSort(arr);
 		Utility.print(arr);
-
 	}
-	
-	
+
+
 	// main function to do heap sort
 	static void heapSort(int arr[])
 	{
 		int length = arr.length;
 		int lastIndex = length - 1;
 		// Build heap (rearrange array)
+		buildHeap(arr);
+		//
+		System.out.println("Build Heap");
+		Utility.print(arr);
 		int parentIndexLastNode = getParentIndex(lastIndex);
 		for (int i = parentIndexLastNode; i >= 0; i--){
 			heapifyDown(arr, lastIndex, i);
@@ -31,19 +29,28 @@ public class HeapSort {
 		// One by one extract an element from heap
 		for (int i=lastIndex; i>=0; i--)
 		{
-		   // Move current root to end
+			// Move current root to end
 			swap(arr,0, i);
 			// call max heapify on the reduced heap
 			heapifyDown(arr, i, 0);
 		}	
 	}
-		
-	
-	
-	
+
+
+
+
+	private static void buildHeap(int[] arr) {
+		int n = getParentIndex(arr.length-1);
+		for (int i = n; i >= 0; i--) {
+			heapifyDown(arr, arr.length-i, i);
+		}
+
+	}
+
+
 	// To heapify a subtree rooted with node i which is
 	// an index in arr[]. size is size of heap  max heap
-		static void  heapifyDown(int arr[], int size, int index){
+	static void  heapifyDown(int arr[], int size, int index){
 		while (hasLeftChild(index, size)) {
 			int biggerChildIndex = getLeftChildIndex(index);
 			if (hasRightChild(index, size) && arr[getRightChildIndex(index)] > arr[getLeftChildIndex(index)]) {
@@ -57,13 +64,13 @@ public class HeapSort {
 			}
 		}
 	}
-	
-	
+
+
 	private static void swap(int[] items, int indexOne, int indexTwo) {
 		int temp = items[indexOne];
-    	items[indexOne] = items[indexTwo];
-    	items[indexTwo] = temp;
-		
+		items[indexOne] = items[indexTwo];
+		items[indexTwo] = temp;
+
 	}
 
 
@@ -74,9 +81,9 @@ public class HeapSort {
 	}
 
 	private static boolean hasLeftChild(int index,int size) {
-	   return getLeftChildIndex(index) < size;
+		return getLeftChildIndex(index) < size;
 	}
-	
+
 	private  static int getLeftChildIndex(int parentIndex){
 		return 2*parentIndex + 1;
 	}
@@ -89,6 +96,6 @@ public class HeapSort {
 
 
 
-	
+
 
 }

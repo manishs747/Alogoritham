@@ -7,8 +7,8 @@ import java.util.List;
 public class BTreePrinter {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		 Node root = TreeUtility.getSampleTree();
+		 //Node root = Tree.getSampleTree();
+		 Node root = Tree.getSampleBinarySearchTree();
 		 printNode(root);
 	}
 	
@@ -21,14 +21,12 @@ public class BTreePrinter {
 	private static <T extends Comparable<?>> void printNodeInternal(List<Node> nodes, int level, int maxLevel) {
         if (nodes.isEmpty() || BTreePrinter.isAllElementsNull(nodes))
             return;
-
         int floor = maxLevel - level;
         int endgeLines = (int) Math.pow(2, (Math.max(floor - 1, 0)));
         int firstSpaces = (int) Math.pow(2, (floor)) - 1;
         int betweenSpaces = (int) Math.pow(2, (floor + 1)) - 1;
 
         BTreePrinter.printWhitespaces(firstSpaces);
-
         List<Node> newNodes = new ArrayList<Node>();
         for (Node node : nodes) {
             if (node != null) {
@@ -70,7 +68,6 @@ public class BTreePrinter {
 
             System.out.println("");
         }
-
         printNodeInternal(newNodes, level + 1, maxLevel);
     }
 

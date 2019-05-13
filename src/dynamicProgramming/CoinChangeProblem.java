@@ -13,7 +13,7 @@ import java.util.Scanner;
  * https://www.youtube.com/watch?v=rdI94aW6IWw
  * 
  * url : https://www.hackerrank.com/challenges/coin-change
-//www.hackerrank.com/challenges/ctci-coin-change/problem
+//www.hackerrank.com/challenges/ctci-coin-change/problem  not solved
  * 
  * 
  4 3
@@ -46,20 +46,20 @@ public class CoinChangeProblem {
 	private static long makeChange(long [] coins, int money) {
 		return makeChange(coins, money,0,new HashMap<String,Long>());
 	}
-	
+
 	private static long makeChange(long [] coins,long money ,int index,Map<String,Long> memo){	
 		if(money == 0){
 			return 1;
-		 }
+		}
 		if(index >= coins.length){
 			return 0;
 		}
-		
+
 		String key = money+"_"+index;
 		if(memo.containsKey(key)){
 			return memo.get(key);
 		}
-		
+
 		long ways = 0;
 		long amountWithCoin = 0;
 		while(amountWithCoin <= money){
@@ -70,7 +70,7 @@ public class CoinChangeProblem {
 		memo.put(key, ways);
 		return ways;
 	}
-	
+
 	
 	
 	

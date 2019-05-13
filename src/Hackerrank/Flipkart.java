@@ -82,7 +82,7 @@ public class Flipkart {
 	         temp[i] = arr[i];
 	  
 	     // Sort the copied array.
-	     sort(temp, temp + n);
+	   //  sort(temp, temp + n);
 	  
 	     // Finding the first mismatch.
 	     int front;

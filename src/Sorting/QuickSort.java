@@ -1,6 +1,6 @@
 package Sorting;
 
-import Utils.ArrayUtils;
+import utils.ArrayUtils;
 
 public class QuickSort {
 
@@ -36,12 +36,7 @@ public class QuickSort {
 		return i + 1;
 	}
 	
-	
-	
-	
-	
-	
-	
+
 	
 	public static void quickSorted(int[] A, int l, int h) {
 		if (l < h) {
@@ -50,8 +45,24 @@ public class QuickSort {
 			quickSort(A, p , h);
 		}
 	}
+	
+	
+	private static int partioned(int[] array, int left, int right) {
+		int pivot = array[(left + right) / 2];
+		while(left< right) {
+			while(array[left] < pivot) {
+				left++;
+			}
+			while(array[right] > pivot) {
+				right--;
+			}
+			ArrayUtils.swap(array, left, right);
+		}
+		return left;
+	}
+	
 	//as per HackerRank partioned
-	public static int partioned(int[] array, int left, int right) {
+	public static int partionedother(int[] array, int left, int right) {
 		int pivot = array[(left + right) / 2];
 		while (left <= right) {
 			while (array[left] < pivot) {
@@ -66,9 +77,7 @@ public class QuickSort {
 				right--;
 			}
 		}
-
 		return left;
-
 	}
 	
 	

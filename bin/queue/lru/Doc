@@ -1,0 +1,9 @@
+Doc:
+
+Lru:Lease Recently used.
+
+The LRU caching scheme is to remove the least recently used frame when the cache is full and a new page is referenced which is not there in cache.
+
+Queue which is implemented using a doubly linked list. The maximum size of the queue will be equal to the total number of frames available (cache size).
+The most recently used pages will be near front end and least recently pages will be near rear end.
+A Hash with page number as key and address of the corresponding queue node as value

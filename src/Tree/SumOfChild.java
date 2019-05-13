@@ -5,17 +5,17 @@ public class SumOfChild {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		 Node a = TreeUtility.getSampleTree();
-		  printNice(a);
+		 Node a = Tree.getSampleBinarySearchTree();
+		 Tree.printTreeNice(a); 
 		  System.out.println();
 		  makeSum(a);
-		  printNice(a);
+		  Tree.printTreeNice(a); 
 	}
 
 
 	
 	
-	
+	//make each node sum of its children
 	public static int makeSum(Node root)
 	 {   if (root == null)
 			   return 0;
@@ -26,27 +26,6 @@ public class SumOfChild {
 		return temp + sum;
 	 }
 	
-	public static void printNice(Node root)
-	 {
-	  if (root == null)
-	   return;
-	  else
-	  {
-	   System.out.print(root.data);
-	   if (root.left != null)
-	   {
-	    System.out.print("L->[");
-	    printNice(root.left);
-	    System.out.print("]");
-	   }
-	   if (root.right != null)
-	   {
-	    System.out.print("R->[");
-	    printNice(root.right);
-	    System.out.print("]");
-	   }
-	  }
-	  
-	 }
+	
 
 }

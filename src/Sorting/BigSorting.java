@@ -3,7 +3,7 @@ package Sorting;
 import java.math.BigInteger;
 import java.util.Scanner;
 
-import Utils.ArrayUtils;
+import utils.ArrayUtils;
 
 /*
  https://www.hackerrank.com/challenges/big-sorting

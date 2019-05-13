@@ -29,7 +29,7 @@ public class SpiralPrint {
 		 
 		int arr[][]=getInput();
 		 Utility.print(arr);
-		 spiralPrint(arr.length,arr.length, arr);
+		 spiralPrint( arr);
 		 
 	}
 
@@ -48,36 +48,35 @@ public class SpiralPrint {
 		return arr;
 	}
 	
-	
-	public static void spiralPrint(int R,int C,int arr[][]){
-		int  r = 0, c = 0;//starting row and column
-
-		while(r<R && c< C){
-
-			for (int j = c; j < C ; j++) {
-				System.out.print(arr[r][j] +" ");
+	//cleaner
+	public static void spiralPrint(int arr[][]){
+		int R = arr.length-1,C = arr.length-1;
+		int r = 0,c = 0;
+		while(r<R && c < C) {
+			for ( int i = c  ; i <= C; i++) {
+				System.out.print(arr[r][i]+" ");
 			}
 			r++;
-
-			for (int j = r;j <R; j++) {
-				System.out.print(arr[j][C-1]+" ");
+			for (int j = r; j <= R; j++) {
+				//System.out.println("I;"+j+" J:"+C);
+				System.out.print(arr[j][C]+" ");
 			}
 			C--;
-
-			for (int j = C-1; j >= c; j--) {
-				System.out.print(arr[R-1][j]+" ");
+			for (int j = C ; j >= c; j--) {
+				System.out.print(arr[R][j]+" ");
 			}
 			R--;
-
-			for (int j = R-1; j >= r; j--) {
+			for (int j = R; j >= r; j--) {
 				System.out.print(arr[j][c]+" ");
 			}
 			c++;
 		}
 	}
 	
+
+	
 	//also working
-	private static void spiralPrint( int[][] arr) {
+	private static void spiralPrintOther( int[][] arr) {
 		int R = arr.length;
 	    int C = arr[0].length;
 	    int  r = 0, c = 0;//starting row and column

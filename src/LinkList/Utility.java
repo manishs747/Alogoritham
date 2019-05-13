@@ -1,7 +1,11 @@
-package LinkList;
+package linklist;
 
 public class Utility {
 	
+	public static void main(String[] args) {
+		System.out.println("hello");
+	}
+
 	public static void Print(Node head) {
 		if (head == null) {
 			return;
@@ -10,6 +14,7 @@ public class Utility {
 			System.out.print(head.data + " ->");
 			head = head.next;
 		}
+		System.out.println();
 	}
 	
 	public static int getListLength(Node headNode) {
@@ -21,5 +26,4 @@ public class Utility {
 		}
 		return length;
 	}
-
 }

@@ -1,8 +1,5 @@
 package stack;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -12,12 +9,12 @@ import java.util.Stack;
  * 
  * 
 5
-1 2 3 4 5
+1 3 2 4 5
 9
 
 5
 1 2 2 2 1
-9
+6
 
 7
 6 2 5 4 5 1 6
@@ -28,7 +25,7 @@ import java.util.Stack;
 return 10.
 
 7
-6 2 5 4 5 2 6
+6 2 5 4 5 1 6
 12
 
  */
@@ -42,8 +39,8 @@ public class LargestRectangle {
         for(int h_i = 0; h_i < n; h_i++){
             h[h_i] = in.nextInt();
         }
-        long result = largestRectangleN(h);
-        System.out.println(result);
+        long result = largestRectangleAreaStack(h);
+        System.out.println("Final Result"+result);
         in.close();
     }
 
@@ -51,6 +48,9 @@ public class LargestRectangle {
 	// Create an empty stack. The stack holds INDEXES of hist[] array
     // The bars stored in stack are always in increasing order of their
     // heights.
+	
+	
+	//its really good  Best Sollution
 	static long largestRectangleN(int[] h) {
         Stack<Integer> s = new Stack<>();
          
@@ -74,6 +74,35 @@ public class LargestRectangle {
     	}
 		return maxArea;
     }
+	
+	public static long largestRectangleAreaStack(int [] arr){
+		long max = Integer.MIN_VALUE;
+		Stack<Integer> stack = new Stack<Integer>();
+		for (int i = 0; i < arr.length; i++) {
+			if(stack.empty()){
+			//	System.out.println("Adding in Empty Stack:"+arr[i]);
+				stack.push(i);
+				continue;
+			}
+			int item = arr[i];
+			if(item > arr[stack.peek()]){
+				stack.push(i);
+			}else{
+				while(!stack.isEmpty() && arr[stack.peek()] > arr[i]){
+					max = popStackAndCalculateMax(arr, stack, max, i);
+				}
+				stack.push(i);
+			}
+		}
+		System.out.println(stack);
+		if(!stack.empty()){
+			int parentIndex = stack.peek();
+			while(!stack.empty()){
+				max = popStackAndCalculateMax(arr, stack, max, parentIndex);
+			}
+		}
+		return max;
+	}
 
 	private static long popStackAndCalculateMax(int[] h, Stack<Integer> s,
 			long maxArea, int i) {
@@ -120,6 +149,9 @@ public class LargestRectangle {
 		//System.out.println("Lenght for index "+i+" is "+lenght+" left: "+left+" right: "+right);
 		return lenght;
 	}
+	
+	
+	
 
     
 

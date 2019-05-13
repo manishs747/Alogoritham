@@ -11,7 +11,7 @@ import java.util.Stack;
 import java.util.TreeMap;
 import java.util.Map.Entry;
 
-import LinkList.LinkList;
+import linklist.LinkList;
 /*
  * https://www.geeksforgeeks.org/binary-tree-data-structure/
  * 
@@ -23,7 +23,7 @@ public class Traversal {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		 Node root = TreeUtility.getSampleBinarySearchTree();
+		 Node root = Tree.getSampleBinarySearchTree();
 		// TreeUtility.printNice(node);
 		 BTreePrinter.printNode(root);
 		// printPostOrder(root);
@@ -35,7 +35,7 @@ public class Traversal {
 		 System.out.println();
 		// printVerticalOrder(root);
 		 System.out.println("new ");
-		 printKDistant(root,3);
+		// printKDistant(root,3);
 	}
 	
 
@@ -88,6 +88,26 @@ public class Traversal {
 		}
 	}
 	
+	public static void printPreOrderIterativeOther(Node root) {
+		if(root==null){return;}
+		Stack<Node> stack = new Stack<Node>();
+		while(true){
+			System.out.print(root.data+ " ");
+			if (root.right != null) {
+				stack.add(root.right);
+			}
+			if (root.left != null) {
+				stack.add(root.left);
+			}
+			if (stack.isEmpty()) {
+				break;
+			}
+			root  = stack.pop();
+		}
+	}
+	
+	
+	
 	public static void printPostOrder(Node node) {
 		if(node==null){return;}
 		printPostOrder(node.left);
@@ -121,8 +141,11 @@ public class Traversal {
 	/*
 	 * The idea is to move down to leftmost node using left pointer. While moving down, push root and root’s right child to stack. Once we reach leftmost node, 
 	 * print it if it doesn’t have a right child. If it has a right child, then change root so that the right child is processed before.
+	 * 
+	 * 
+	 * disadvantage:  we  are removing and putting it back few nodes
 	 */
-	public static void printPostOrderIterativeSingleStack(Node root) {
+	public static void printPostOrderIterativeSingleStack1(Node root) {
 		if(root==null){return;}
 		Node current = root;
 		Stack<Node> stack = new Stack<Node>();
@@ -138,6 +161,8 @@ public class Traversal {
 				break;
 			}
 			current = stack.pop();
+			
+			//if true right visit is pending
 			if(current.right != null && !stack.empty()  && current.right == stack.peek()){
 				stack.pop();
 				stack.push(current);
@@ -146,10 +171,39 @@ public class Traversal {
 				System.out.print( current.data  + " ");
 				current = null;
 			}
-
 		}
 	}
 	
+	/* process till either current is not null or stack is not Empty
+	 * if current is null
+	 * keep going left and store node in stack till current become null
+	 * else 
+	 *    if there is right elemnt of top stack node make it current
+	 *    else
+	 *      if no right of peek node pop it and print it, and keep poping and  print till peek element is parent of previous poped element.
+	 */
+	public static void printPostOrderIterativeSingleStack2(Node root) {
+		Node current = root;
+		Stack<Node> stack = new Stack<Node>();
+		while(current != null || !stack.isEmpty()){ // process till either current is not null or stack is not Empty
+			if(current != null){
+				stack.push(current);
+				current = current.left;
+			}else {
+				Node tmp = stack.peek().right;
+				if (tmp == null) {
+					tmp = stack.pop();
+					System.out.print(tmp.data + " ");
+					while (!stack.isEmpty() && tmp == stack.peek().right) {  //tricky part
+						tmp = stack.pop();
+						System.out.print(tmp.data + " ");
+					}	
+				}else {
+					current = tmp;
+				}
+			}
+		}
+	}
 	
 	
 	public static void printPostOrderIterative(Node root) {
@@ -161,7 +215,7 @@ public class Traversal {
 				stack.add(root.right);
 			}
 			stack.add(root);
-			
+
 			if(stack.isEmpty()){
 				break;
 			}
@@ -283,119 +337,12 @@ public class Traversal {
 
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//bfs
-	public static void printLevelOrder(Node node) {
-		if(node==null){return;}
-		Queue<Node> queue = new LinkedList<Node>();	
-		queue.add(node);
-		while(!queue.isEmpty()){
-			Node tempNode = queue.poll();
-			System.out.print(tempNode.data + " ");
-			/*Enqueue left child */
-			if(tempNode.left != null){
-				queue.add(tempNode.left);
-			}
-			/*Enqueue right child */
-			if(tempNode.right!=null){
-				queue.add(tempNode.right);
-			}
 
-		}
-	}
 	
 	
-	public static void printLevelOrderLineSingleQueue(Node node){
-		if(node==null){return;}
-		Queue<Node> queue = new LinkedList<Node>();	
-		queue.add(node);
-		queue.add(null);
-		while(!queue.isEmpty()){
-			Node current  = queue.poll();
-			if(current == null){
-				if(queue.isEmpty()){
-					break;
-				}
-				System.out.println();
-				queue.add(null);
-			}else{
-				System.out.print(current.data + " ");
-				/*Enqueue left child */
-				if(current.left != null){
-					queue.add(current.left);
-				}
-				/*Enqueue right child */
-				if(current.right!=null){
-					queue.add(current.right);
-				}
-			}
-		}
-	}
 	
 	
-	//easy
-	public static void printLevelOrderLineTwoQueue(Node node){
-		if(node == null){
-			return;
-		}
-		Queue<Node> first = new LinkedList<Node>();	
-		Queue<Node> second = new LinkedList<Node>();	
-		first.add(node);
-		
-		while(!first.isEmpty() || !second.isEmpty()){
-			if(first.isEmpty()){
-				Queue<Node> tmp = first;
-				first = second;
-				second = tmp;
-			}
-			while(!first.isEmpty()){
-				Node current = first.poll();
-				System.out.print(current.data + " ");
-				/*Enqueue left child */
-				if(current.left != null){
-					second.add(current.left);
-				}
-				/*Enqueue right child */
-				if(current.right!=null){
-					second.add(current.right);
-				}
-			}
-			System.out.println();
-		}
 
-	}
-	
-	
-	public static void levelOrderTraversalReverse(Node root){
-		if(root==null){return;}
-		Queue<Node> queue = new LinkedList<Node>();	
-		Stack<Node> stack = new Stack<Node>();
-		queue.add(root);
-		while(!queue.isEmpty()){
-			Node temp = queue.poll();
-			stack.push(temp);
-			if(temp.right != null){
-				queue.add(temp.right);
-			}
-			if(temp.left != null){
-				queue.add(temp.left);
-			}
-		}
-		
-		while(!stack.isEmpty()){
-			System.out.print(stack.pop().data+" ");
-		}
-	}
 	
 	
 	//https://www.geeksforgeeks.org/level-order-traversal-in-spiral-form/
@@ -439,39 +386,6 @@ public class Traversal {
 		
 	}
 	
-	
-	//lovely solution
-	static void printPathsRecur(Node root){
-		Stack<Integer> path = new Stack<Integer>();
-		printPathsRecur(root,path);
-	}
-	
-	static void printPathsRecur(Node root ,Stack<Integer> path) {
-		if(root == null){
-			return;
-		}
-		path.push(root.data);
-		if(root.left == null && root.right == null){
-			System.out.println(path);
-		}
-		
-		printPathsRecur(root.left, path);
-		printPathsRecur(root.right, path);
-		path.pop();
-	}
-	
-	
-	static void printKDistant(Node root, int k) {
-		if(root == null){
-			return;
-		}
-		if(k==0){
-			System.out.println(root.data);
-			return;
-		}
-		printKDistant(root.left, k-1);
-		printKDistant(root.right, k-1);
-	}
 	
 	
 	

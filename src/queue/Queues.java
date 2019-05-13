@@ -1,5 +1,9 @@
 package queue;
 
+
+
+//5-->6--->7--->8-->9 (tail)
+//(head)
 public class Queues {
 	
 	private static class Node{

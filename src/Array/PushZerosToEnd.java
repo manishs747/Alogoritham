@@ -1,6 +1,6 @@
 package Array;
 
-import Utils.ArrayUtils;
+import utils.ArrayUtils;
 
 public class PushZerosToEnd {
 

@@ -39,7 +39,7 @@ public class Booking {
         return score;
     }
 
-    static int[] sort_hotels(String keywords, int[] hotel_ids, String[] reviews) {
+    static Map<Integer, Long> sort_hotels(String keywords, int[] hotel_ids, String[] reviews) {
         Map<Integer, Long> scores = new HashMap<>();
 
         for (int i=0; i<hotel_ids.length; i++){

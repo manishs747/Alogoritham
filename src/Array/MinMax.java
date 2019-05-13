@@ -1,5 +1,7 @@
 package Array;
 
+
+
 public class MinMax {
 	
 	public static class Pair{

@@ -77,8 +77,36 @@ public class MaxiumSubArray {
 	}
 	
 	
-
+	//https://www.hackerrank.com/challenges/maxsubarray/problem
+	public static int totalSum(int[] arr) {
+		if (arr.length == 0) return 0;
+		int sum = arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			int c = arr[i];
+			if ( c < 0   &&  sum < c) {
+				sum = c;
+			}else  if (c > 0) {
+				if (sum < 0) {
+					sum = 0;
+				}
+				sum = sum + c;
+			}
+		}
+		return sum;
+	}
+	
+	
 	//dynamic programing  best
+	public static int maxSum(int[] arr) {
+		int ms = Integer.MIN_VALUE ,sum = 0;
+		for (int c : arr) {
+			sum = Math.max(sum + c, c);
+			ms = Math.max(ms, sum);
+		}
+		return ms;
+	}
+	
+
 	public static int getMax(int a[]){
 		   int max_so_far = a[0];
 		   int curr_max = a[0];
@@ -86,7 +114,6 @@ public class MaxiumSubArray {
 		   {
 		        curr_max = Math.max(a[i], curr_max+a[i]);
 		        max_so_far = Math.max(max_so_far, curr_max);
-		        System.out.println("C_ELEMT:"+a[i]+" MAX_CUR:"+curr_max+" MAX_SF:"+max_so_far);
 		   }
 		   return max_so_far;
 	}
@@ -122,26 +149,12 @@ public class MaxiumSubArray {
 		return max_so_far;
 	}
 	
-	
-	
-	public static int getNoncontMaxSubarrayOld(int a[]){
-		int sum = a[0];
-		 for (int i = 1; i < a.length; i++)
-		   {
-		        if(a[i]>0){
-		        	sum+=a[i];
-		        }
-		   }
-		 return sum;
-	}
-	
+
+	//wrong
 	public static int getNoncontMaxSubarray(int a[]){
 		int sum = a[0];
 		 for (int i = 1; i < a.length; i++)
 		   {
-		      /*  if((sum + a[i]) > a[i]){
-		        	sum+=a[i];
-		        }*/
 			if (a[i] > 0) {
 				sum += a[i];
 			} else if (sum < a[i]) {

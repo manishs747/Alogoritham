@@ -2,7 +2,7 @@ package Sorting;
 
 import java.util.Scanner;
 
-import Utils.ArrayUtils;
+import utils.ArrayUtils;
 //https://www.hackerrank.com/challenges/ctci-bubble-sort/problem
 /*
 3
@@ -19,10 +19,8 @@ public class Bubble {
 			arr[i] = in.nextInt();
 		}
        
-		int count  = BubbleSortImproved(arr);
-		System.out.println("Array is sorted in "+count+" swaps.");
-		System.out.println("First Element: "+arr[0]);
-		System.out.println("Last Element: "+arr[len-1]);
+		 bubbleSortHackerRank(arr);
+		ArrayUtils.print(arr);
 	}
 	
 	
@@ -47,6 +45,25 @@ public class Bubble {
 				}
 			}
 			ArrayUtils.print(arr);
+		}
+	}
+	
+	//lovely
+	/*
+	 * https://www.youtube.com/watch?v=6Gv8vg0kcHc
+	 */
+	public static void bubbleSortHackerRank(int[] arr){
+		boolean isSorted = false;
+		int  lastUnsorted = arr.length-1;
+		while(!isSorted){
+			isSorted = true;
+			for (int i = 0; i < lastUnsorted; i++) {
+				if(arr[i] > arr[i+1]){
+					ArrayUtils.swap(arr, i, i+1);
+					isSorted = false;
+				}
+			}
+			lastUnsorted--;
 		}
 	}
 	
