@@ -6,8 +6,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-import Array.Utility;
-
 /*
  *  10 4
     1 2 3 2 5 3 4 5 8 9

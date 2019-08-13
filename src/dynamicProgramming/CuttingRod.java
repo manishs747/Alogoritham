@@ -70,7 +70,7 @@ public class CuttingRod {
 			return 0;
 		}
 		int[] mem = new int [n+1];
-		for (int j = 1 ; j <= n;j++) {  //j is starting from 1 because cut can start from 1 only.
+		for (int j = 1 ; j <= n;j++) {  //j is starting from 1 because cut can start from 1 only. It a rod Size
 			int q = Integer.MIN_VALUE;
 			for (int i = 0; i < j; i++) {
 				q = Math.max(q, prc[i]+mem[j-1-i]); //we are doing n-1 because for n = 1 ,price is at price[0]  and also because i starts from zero

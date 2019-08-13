@@ -10,6 +10,8 @@ import java.util.Scanner;
  * 
  * https://www.youtube.com/watch?v=Mbav2iuJ7xQ
  * 
+ * https://leetcode.com/problems/longest-palindromic-substring/
+ * 
  * 
  * forgeeksskeegfor
  * 
@@ -37,22 +39,18 @@ public class LongestPalindromicSubString {
 	}
 	
 	static String longestPalSubstr(String s){
-		
 		if (s.isEmpty()) {
 			return null;
 		}
-	 
 		if (s.length() == 1) {
 			return s;
 		}
-		
 		String longest = s.substring(0, 1);
 		for (int i = 0; i < s.length(); i++) {
 			// get longest palindrome with center of i
 			String tmp = helper(s, i, i);
 			System.out.println("pallend with center:"+s.charAt(i)+" is "+tmp);
 		}
-		
 		return longest;
 	}
 	
@@ -66,13 +64,11 @@ public class LongestPalindromicSubString {
 		if(end<s.length()-1 && s.charAt(begin)==s.charAt(end+1)){
 			end++;
 		}
-		
 		while(begin >=0 && end <= s.length()-1 && s.charAt(begin)==s.charAt(end)){
 			begin--;
 			end++;
 		}
 		return s.substring(begin+1, end);
-		
 	}
 	
 	static  boolean ispal(String str){
@@ -85,11 +81,9 @@ public class LongestPalindromicSubString {
 	public static String longestPalindromeDp(String s) {
 		if (s == null || s.length() <= 1)
 			return s;
-
 		int len = s.length();
 		int maxLen = 1;
 		boolean[][] dp = new boolean[len][len];
-
 		String longest = null;
 		for (int l = 0; l < len; l++) {
 			for (int i = 0; i < len - l; i++) {
@@ -101,12 +95,10 @@ public class LongestPalindromicSubString {
 					if (l + 1 > maxLen) {
 						maxLen = l + 1;
 						longest = s.substring(i, j + 1);
-						
 					}
 				}
 			}
 		}
-
 		return longest;
 	}
 	

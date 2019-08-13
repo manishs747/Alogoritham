@@ -58,15 +58,84 @@ public class TrapRainWater {
 	public static void main(String[] args) {
       
 		
-		Scanner in = new Scanner(System.in);
+		/*Scanner in = new Scanner(System.in);
         int numberOfInput = in.nextInt();
         for (int i = 0; i < numberOfInput; i++) {
 			int[] arr = getInputList(in);
 			Utility.print(arr);
 			System.out.println(getRainHarvested(arr));
-		}
+		}*/
+		//int [] height = {0,1,0,2,1,0,1,3,2,1,2,1};
+		int [] height = {6,6,6,6,6,6};
+		System.out.println(trap(height));
         
 	}
+	
+	
+	
+	/*
+	 * https://leetcode.com/problems/trapping-rain-water/
+	 * 
+	 * Input: [0,1,0,2,1,0,1,3,2,1,2,1]
+Output: 6
+	 * 
+	 * 	
+	 */
+	
+	
+	public static int trap(int[] height) {
+		if(height.length == 0) {
+			return 0;
+		}
+		Stack<Integer>  stack = getMaxStacks(height);
+		System.out.println(stack);
+		int max = 0;
+		int water = 0;
+		for (int h : height) {
+			max = Math.max(h, max);
+			water += Math.min(max,stack.peek()) - h;
+			if(stack.peek() == h) {
+				stack.pop();
+			}
+		}
+		return water;
+	}
+
+	public static Stack<Integer> getMaxStacks(int[] height){
+		Stack<Integer>  stack = new Stack<>();
+		stack.push(height[height.length -1]);
+		for (int i = height.length -2 ; i  >= 0; i--) {
+			int c = height[i];
+			if(c >= stack.peek()) {
+				stack.push(c);
+			}
+		}
+		return stack;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	private static int getRainHarvested(int[] arr) {

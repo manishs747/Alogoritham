@@ -6,11 +6,11 @@ public class ParkingLot {
 	private final int NUM_LEVELS = 5;
 	public ParkingLot() { 
 	        //initialize parking lot stacks with parking lot  if we are creating stack for each car type
-	        initialize(); 
+	      //  initialize(); 
 	}
 	/* Park the vehicle in a spot (or multiple spots).
 	8 * Return false if failed. */
-	public boolean parkVehicle(Vehicle vehicle) { 
+	public boolean parkVehicle(Vehicle vehicle) {  //can report spot
 		return false;
 	}
 	

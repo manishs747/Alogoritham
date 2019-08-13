@@ -1,13 +1,28 @@
 package Tree;
 
+import Tree.online.TreeNode;
+
 public class Mirror {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 Node root = Tree.getSampleBinarySearchTree();
-		 //TreeUtility.printNice(root);
+		 BTreePrinter.printNode(root);
+		
 		
 	}
+	
+	   public static TreeNode invertTree(TreeNode root) {
+		   if(root == null) {
+			   return root;
+		   }
+		   TreeNode tmp = root.left;
+		   root.left = root.right;
+		   root.right = tmp;
+		   invertTree(root.right);
+		   invertTree(root.left);
+		   return root;
+	    }
 	
 	
 	
@@ -28,15 +43,18 @@ public class Mirror {
 	
 
 	
-	//code to make mirror of it self
-	public static void mirror(NodeT node){
-		if(node == null){
-			return;
-		}
-		mirror(node.left);
-		mirror(node.right);
-		swapNode(node);
+	public static void mirror(Node root){
+	    if (root == null){
+	       return ;
+	    }
+	    Node tmp = root.left;
+	    root.left =  root.right;
+	    root.right = tmp;
+	    mirror(root.left);
+	    mirror(root.right);
 	}
+	
+	
 
 
 

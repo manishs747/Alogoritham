@@ -1,4 +1,4 @@
-package designProblems.jukebox;
+package designProblem.jukebox;
 
 public class Jukebox {
 

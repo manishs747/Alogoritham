@@ -22,7 +22,13 @@ find hak
  * 
  */
 public class Contacts {
-	
+
+	private final Node root;
+	public Contacts() {
+		this.root = new Node();
+	}
+
+
 	private class Node{
 		Map<Character,Node> childrens;
 		int size = 0;
@@ -31,11 +37,10 @@ public class Contacts {
 			childrens = new HashMap<>();
 			endOfWord = false;
 		}
-		
+
 		public void add(String s){
 			System.out.println("add is called :"+s);
 			int index = 0;
-			
 			Node current = root;
 			while (index < s.length()) {
 				size++;
@@ -47,15 +52,15 @@ public class Contacts {
 				current = child;
 				index++;
 			}
-			 //mark the current nodes endOfWord as true
+			//mark the current nodes endOfWord as true
 			current.endOfWord = true;
-			
+
 		}
-		
+
 		public int findCount(String s, int index) {
 			System.out.println("findCount :"+s);
 			if (index == s.length()) {
-				return size;
+				return size;  //actual result
 			}
 			Node child = childrens.get(s.charAt(index));
 			if (child == null) {
@@ -64,48 +69,35 @@ public class Contacts {
 			return findCount(s, index + 1);
 		}
 	}
-	
-	 private final Node root;
-	 public Contacts() {
-	        this.root = new Node();
-	}
-	 
-	 
-	 
-	
 
-		private  void process(String op, String contact) {
-			System.out.println("Process:"+op);
-			switch (op) {
-			case "add":
-				root.add(contact);
-				return;
-			
-            case "find":
-				System.out.println(root.findCount(contact, 0));
-				break;
-			default:
-				break;
-			}
-			
-		}
-	
+
 	public static void main(String[] args) {
-		      Contacts  c = new Contacts();
-		        Scanner in = new Scanner(System.in);
-		        int n = in.nextInt();
-		        for(int a0 = 0; a0 < n; a0++){
-		            String op = in.next();
-		            String contact = in.next();
-		            c.process(op,contact);
-		        }
-		    
+		Contacts  c = new Contacts();
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		for(int a0 = 0; a0 < n; a0++){
+			String op = in.next();
+			String contact = in.next();
+			c.process(op,contact);
+		}
+
 	}
 
 
+	private  void process(String op, String contact) {
+		System.out.println("Process:"+op);
+		switch (op) {
+		case "add":
+			root.add(contact);
+			return;
 
+		case "find":
+			System.out.println(root.findCount(contact, 0));
+			break;
+		default:
+			break;
+		}
 
-
-
+	}
 
 }

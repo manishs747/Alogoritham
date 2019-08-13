@@ -1,6 +1,5 @@
 package Sorting;
 
-import Array.Utility;
 import utils.ArrayUtils;
 
 public class MergeSort {

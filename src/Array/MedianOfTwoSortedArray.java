@@ -1,4 +1,7 @@
 package Array;
+
+import java.util.Arrays;
+
 //https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
 public class MedianOfTwoSortedArray {
 
@@ -11,6 +14,11 @@ public class MedianOfTwoSortedArray {
 
 	}
 	
+	static int findMedian(int[] arr) {
+		Arrays.sort(arr);
+        return arr[arr.length/2];
+    }
+	
 	
 	public static float getMedianSingle(int arr[]){
 		int n = arr.length;
@@ -20,15 +28,12 @@ public class MedianOfTwoSortedArray {
 	   if(n%2 == 0){
 			return ((arr[n/2]+arr[n/2-1])/2);
 		}
-	   
 		return arr[n/2];
-	
 	}
 	
 	
 	
 	public static float getMedianN(int [] a,int [] b){
-
 		if(a.length == 0){
 			return getMedianSingle(b);
 		}
@@ -47,7 +52,6 @@ public class MedianOfTwoSortedArray {
 
 		for (count = 0; count <= n; count++)
 		{
-
 			if(i < a.length && j < b.length){
 				if (a[i] < b[j])
 				{   
@@ -61,9 +65,7 @@ public class MedianOfTwoSortedArray {
 					m1 = m2;  
 					m2 = b[j++];
 				}
-
 			}else{ //done with one array
-
 				if(i < a.length){
 					m1 = m2;  
 					m2 = a[i++];
@@ -72,9 +74,7 @@ public class MedianOfTwoSortedArray {
 					m2 = b[j++];
 				} 
 			}
-
 		}
-
 		return isEven ? (m1 + m2)/2 : m2;
 	}
 	

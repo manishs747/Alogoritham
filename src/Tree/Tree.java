@@ -33,7 +33,7 @@ public class Tree {
 
 	 */
 	public static Node getSampleBinarySearchTree() {
-		int [] list = {4,2,6,1,3,5,7};	
+		int [] list = {4,2,6};	
 		return getBSTFromArray(list);
 	}
 	

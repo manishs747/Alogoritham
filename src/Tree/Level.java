@@ -1,23 +1,110 @@
 package Tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
+
+import Tree.online.TreeNode;
 
 //bfs
 public class Level {
 
 	public static void main(String[] args) {
 
-		int [] list = {4,2,6,1,-1,3,5,7,8};
+		int [] list = {};
 		Node root = Tree.getBSTFromArray(list);
 		BTreePrinter.printNode(root);
-		printZigZagTraversal(root);
+		System.out.println(levelOrder(root));
 
 	}
-
 	
-	/***************************************************************************************************************************************/
+	
+	/*******************************************************LEVEL ORDER ********************************************************************************/
+	
+    public static List<List<Integer>> levelOrder(Node root) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if(root == null) {
+            return result;
+        }
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.add(root);
+        queue.add(null);
+        List<Integer> list = new ArrayList<>();
+        while(!queue.isEmpty()) {
+            Node node = queue.poll();
+            if(queue.isEmpty()) {
+                break;
+            }
+            
+            if(node == null) {
+                queue.add(null);
+                result.add(list);
+                list =  new ArrayList<>();
+            }else {
+                list.add(node.data);
+                if(node.left != null) {
+                    queue.add(node.left) ;
+                }
+                if(node.right != null) {
+                    queue.add(node.right) ;
+                }
+            }
+        }
+        result.add(list);
+        return result;
+    }
+	
+	
+	/*******************************************************LEVEL ORDER REVERSE********************************************************************************/
+	
+	public static List<List<Integer>> levelOrderBottom(Node root) {
+		if(root == null) {
+			return null;
+		}
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.add(root);
+        queue.add(null);
+        Stack<Node> stack = new Stack<>();
+        while(!queue.isEmpty()) {
+            Node node = queue.poll();
+            if(queue.isEmpty()) {
+                break;
+            }
+            stack.push(node);
+            if(node == null) {
+                queue.add(null);
+            }else {
+                if(node.right != null) {
+                    queue.add(node.right) ;
+                }
+                if(node.left != null) {
+                    queue.add(node.left) ;
+                }
+            }
+        }
+        System.out.println(stack);
+        return getListFromStack(stack);
+    }
+
+    public static List<List<Integer>> getListFromStack(Stack<Node> stack){
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<Integer> list = new ArrayList<>();
+        while(!stack.isEmpty()) {
+            Node node = stack.pop();
+            if(node == null) {
+                result.add(list);
+                list = new ArrayList<Integer>();
+            }else {
+                list.add(node.data);
+            }
+        }
+        result.add(list);
+        return result;
+    }
+
+	/*******************************************************LEVEL ORDER********************************************************************************/
 
 	//BFS
 	/*

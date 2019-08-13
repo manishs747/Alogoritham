@@ -22,6 +22,15 @@ public class Utility {
         System.out.println();
     }
 	
+	public static void print(long[] arr) {
+        
+        for (long elem : arr) {
+            System.out.print(elem+" ");
+        }
+     
+    System.out.println();
+}
+	
 	
 	public static void print(double[] arr) {
         
@@ -47,5 +56,15 @@ public class Utility {
      
     System.out.println();
 }
+	
+	
+	public static void swap(char[] array,int i ,int j) {
+		char tmp = array[i];
+		array[i] = array[j];
+		array[j] = tmp;
+	}
+	
+	
+	
 
 }

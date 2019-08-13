@@ -20,41 +20,40 @@ public class Main {
 
 	public static void main(String[] args) {
 	
-		
-		int [] ar1 = {1, 5, 8, 9, 10, 17, 17, 20};
-		
+		int [] prc = {1 ,  5 ,  8,   9  ,10,  17 , 17 , 20 };
+		System.out.println(cutRod(prc, 8,new int[8]));
 		
 	
 	}
 	
-	private static int makeChange(long [] coins, int money) {
-		return makeChange(coins, money,0,new HashMap<String,Integer>());
-	}
+	//cutRod(n) = max(price[i] + cutRod(n-i-1)) for all i in {0, 1 .. n-1}
 
-	private static int makeChange(long [] coins,long money ,int index,Map<String,Integer> memo){	
-		if(money == 0){
-			return 1;
-		}
-		if(index >= coins.length){
+	/*
+	length   | 1   2   3   4   5   6   7   8  
+	--------------------------------------------
+	price    | 1   5   8   9  10  17  17  20     22 (by cutting in two pieces of lengths 2 and 6)
+
+	length   | 1   2   3   4   5   6   7   8  
+	--------------------------------------------
+	price    | 3   5   8   9  10  17  17  20       24 (by cutting in eight pieces of length 1)
+
+	*/
+	
+	/* Returns the best obtainable price for a rod of length
+    n and price[] as prices of different pieces */
+	//top-down, recursive manner
+	static int cutRod(int[] prc,int n , int [] arr){
+		System.out.println("N:"+n);
+		if(n < 1) {
 			return 0;
 		}
-
-		String key = money+"_"+index;
-		if(memo.containsKey(key)){
-			return memo.get(key);
+		if(arr[n-1] == 0) {
+			for (int i = 0; i < n; i++) {
+				arr[n-1] = Math.max(arr[n-1],prc[i]+ cutRod(prc,n-i-1,arr));
+			}
 		}
-
-		int ways = 0;
-		int amountWithCoin = 0;
-		while(amountWithCoin <= money){
-			long remainingMoney = money - amountWithCoin;
-			ways += makeChange(coins, remainingMoney,index+1,memo);
-			amountWithCoin +=coins[index];
-		}
-		memo.put(key, ways);
-		return ways;
+		return arr[n-1] ;
 	}
-
 
 
 }

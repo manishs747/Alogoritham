@@ -1,5 +1,6 @@
 package Tree;
 
+import java.util.Iterator;
 import java.util.Stack;
 
 
@@ -22,25 +23,7 @@ public class PrintTree {
 
 	}
 	
-	//lovely solution
-		static void printPathsRecur1(Node root){
-			Stack<Integer> path = new Stack<Integer>();
-			printPathsRecur1(root,path);
-		}
-		
-		static void printPathsRecur1(Node root ,Stack<Integer> path) {
-			if(root == null){
-				return;
-			}
-			path.push(root.data);
-			if(root.left == null && root.right == null){
-				System.out.println(path);
-			}
-			
-			printPathsRecur1(root.left, path);
-			printPathsRecur1(root.right, path);
-			path.pop();
-		}
+
 		
 		
 		static void printKDistant(Node root, int k) {
@@ -57,42 +40,21 @@ public class PrintTree {
 		
 		
 	
-	
-	public static void printRootToLeafPath(Node root) {
-		if(root==null){return;}
-		Stack<Node> stack = new Stack<Node>();
-		printRootToLeafPathRec(root,stack);
-	}
-
-
-	private static void printRootToLeafPathRec(Node root,Stack<Node> stack) {
-		if(root==null){return;}
-		stack.push(root);
-		printRootToLeafPathRec(root.left,stack);
-		printRootToLeafPathRec(root.right,stack);
-		if(root.left == null && root.right == null){
-			System.out.println(stack);
-		}
-		stack.pop();
-	}
-	
-	static void printPathsRecur(Node root){
-		Stack<Integer> path = new Stack<Integer>();
-		printPathsRecur1(root,path);
-		}
-
-		static void printPathsRecur(Node root ,Stack<Integer> path) {
-		if(root == null){
-		return;
-		}
-		path.push(root.data);
-		if(root.left == null && root.right == null){
-		System.out.println(path);
-		}
-
-		printPathsRecur1(root.left, path);
-		printPathsRecur1(root.right, path);
-		path.pop();
-		}
+		 public static int sumNumberHelper(Node A,int sum,Stack<Node> stack)  {
+			 if (A == null) {
+				 return 0;
+			 }
+			 stack.push(A);
+			 if (A.left == null && A.right == null) {
+				 Iterator<Node> iter = stack.iterator();
+				 while (iter.hasNext()){
+					    sum += iter.next().data;
+					}
+			 }
+			 int leftSum =  sumNumberHelper(A.left,sum, stack);
+			 int right = sumNumberHelper(A.right,sum , stack);
+			 stack.pop();
+			 return sum +leftSum + right ;
+		 }
 	
 }

@@ -27,10 +27,10 @@ public class InfixToPostfix {
 	static {
 		precedenceMap = new HashMap<Character, Integer>();
 		precedenceMap.put('+', 1);
-		precedenceMap.put('-', 2);
-		precedenceMap.put('*', 3);
-		precedenceMap.put('/', 4);
-		precedenceMap.put('^', 5);
+		precedenceMap.put('-', 1);
+		precedenceMap.put('*', 2);
+		precedenceMap.put('/', 2);
+		precedenceMap.put('^', 3);
 	}
 
 	public static void main(String[] args) {

@@ -3,20 +3,41 @@ package String;
 import java.util.Scanner;
 import java.util.Stack;
 
+import org.apache.commons.lang3.ArrayUtils;
+
+import opennlp.tools.util.StringUtil;
+
 public class Reverse {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner sc=new Scanner(System.in);
-        String A=sc.next();
-        if(A.equals(reverse(A))){
-        	System.out.println("Yes");
-        }else{
-        	System.out.println("NO");
-        }
-        
-
+	  System.out.println(reverseJava("((((([{()}[]]{{{[]}}})))))"));
 	}
+	
+	
+	public String reverseString(String A) {
+		char str[] = A.toCharArray();
+		for(int i= 0 ,j = str.length-1;i<j;i++,j--) {
+			char tmp = str[i];
+			str[i] = str[j];
+			str[j] = tmp;
+		}
+		return str.toString();
+	}
+	
+	
+	//reverse each word in a string
+	//https://leetcode.com/problems/reverse-words-in-a-string-iii/
+	
+	 public String reverseWords(String s) {
+		 String[] array = s.split(" ");
+		 StringBuilder sb = new StringBuilder();
+		 for (String word : array) {
+			 sb.append(reverseChar(word));
+			 sb.append(reverseChar(" "));
+		 }
+		return sb.toString().trim();
+	    }
+	
 	
 	public static String reverseJava(String word){
 		StringBuilder sb = new StringBuilder(word);

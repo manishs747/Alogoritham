@@ -1,5 +1,6 @@
 package Array;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class test {
@@ -27,33 +28,24 @@ public class test {
 	
 public static void main(String[] args) {
   
-	String str = "leave   4";
-	//String [] s = str.split()
 
 
 	
 }
 
-private static void spiralPrint( int[][] arr) {
-	int R = arr.length;
-    int C = arr[0].length;
-    int  r = 0, c = 0;//starting row and column
-    while(r<R && c< C){
-    	for (int i = c; i < C-c; i++) {
-			System.out.print(arr[r][i]+" ");
+
+
+
+public int heightChecker(int[] heights) {
+	int count = 0;
+	int sorted[] = heights.clone(); 
+	Arrays.sort(sorted);
+	for(int i=0;i < heights.length ; i++) {
+		if(heights[i] == sorted[i] ) {
+			count++;
 		}
-    	r++;
-    	for (int i = r; i <= R-r; i++) {
-    		System.out.print(arr[i][C-c-1]+" ");
-		}
-    	c++;
-    	for (int i = C-c-1; i >= c-1; i--) {
-    		System.out.print(arr[R-r][i]+" ");
-		}
-    	for (int i = R-r-1; i > r-1; i--) {
-    		System.out.print(arr[i][c-1]+" ");
-		}
-    }
+	}
+	return count;
 }
 
 public static void spiralPrint(int R,int C,int arr[][]){

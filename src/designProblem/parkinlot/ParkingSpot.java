@@ -7,7 +7,7 @@ public class ParkingSpot {
     private int row;
     private int spotNumber;
     private Level level;
- 
+    
     public ParkingSpot(Level lvl, int r, int n,VehicleSize s)
     { 
     	}

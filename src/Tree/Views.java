@@ -10,6 +10,8 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.Vector;
 
+import Tree.online.TreeNode;
+
 public class Views {
 	
 	
@@ -17,26 +19,9 @@ public class Views {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		String s1="1 14 3 7 4 5 15 6 13 10 11 2 12 8 9";
-		String[] words=s1.split("\\s");
-		int [] arr = {2,1,3,6,5,7};
-		Node root = null;
-    	for (String number : words) {
-    		root = BasicOperation.insertRec(root,Integer.parseInt(number));
-		}
-		//Node root = Tree.getSampleBinarySearchTree();
-		//BasicOperation.insert(root, 8);
-		// TreeUtility.printNice(node);
-		// BTreePrinter.printNode(root);
-		/* printLeftView(root);
-		 System.out.println();
-		 printRightView(root);
-		 System.out.println();
-		 printLeafNodes(root);
-		 System.out.println("Bottom View");
-		 bottomView(root);*/
-		//printVerticalOrder(root);
-		topView(root);
+		int[] list = {5,2,3,4,8,7};
+		 Node root = Tree.getBSTFromArray(list );
+		 BTreePrinter.printNode(root);
 	}
 	
 	
@@ -215,6 +200,26 @@ public class Views {
 		map.put(hd, root.data);
 		bottomViewUtils(root.left, hd-1, map);
 		bottomViewUtils(root.right, hd+1, map);
+	}
+	
+	
+	static List<Integer> rightSideView(TreeNode root) {
+		Map<Integer,Integer> map = new TreeMap<>();
+		rightView(root,map,0);
+		List<Integer> list = new ArrayList<>();
+		for (int key : map.keySet()) {
+			list.add(map.get(key));
+		}
+		return list;
+	
+	}
+	private static void rightView(TreeNode root,Map<Integer,Integer> map,int level) {
+		if(root ==  null) {
+			return;
+		}
+		map.put(level, root.val);
+		rightView(root.left, map, level+1);
+		rightView(root.right, map, level+1);
 	}
 	
 	
