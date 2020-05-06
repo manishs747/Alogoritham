@@ -28,7 +28,7 @@ public class test {
 public static void main(String[] args) {
   
 	String str = "leave   4";
-	String [] s = str.split()
+	
 
 
 	

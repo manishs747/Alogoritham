@@ -1,4 +1,4 @@
-package LinkList;
+package linklist;
 
 import java.util.concurrent.ExecutionException;
 

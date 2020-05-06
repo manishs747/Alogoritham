@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import ola.main;
 
 public class StringSplit {
 	
@@ -24,7 +23,7 @@ public class StringSplit {
 
 	private static boolean getFlag(List<String> stopWordsList, String s) {
         for (String stopword : stopWordsList) {
-            String[] comments = s.trim().split(',');
+            String[] comments = s.trim().split(",");
             for (String comment : comments) {
                 if (stopword.equalsIgnoreCase(comment)) {
                     return true;

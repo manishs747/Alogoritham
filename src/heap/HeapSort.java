@@ -2,8 +2,8 @@ package heap;
 
 import java.util.Arrays;
 
+import linklist.Node;
 import Array.Utility;
-import LinkList.Node;
 
 public class HeapSort {
 	
@@ -24,6 +24,10 @@ public class HeapSort {
 		int length = arr.length;
 		int lastIndex = length - 1;
 		// Build heap (rearrange array)
+		buildHeap(arr);
+		//
+		System.out.println("Build Heap");
+		Utility.print(arr);
 		int parentIndexLastNode = getParentIndex(lastIndex);
 		for (int i = parentIndexLastNode; i >= 0; i--){
 			heapifyDown(arr, lastIndex, i);
@@ -41,7 +45,16 @@ public class HeapSort {
 	
 	
 	
-	// To heapify a subtree rooted with node i which is
+	private static void buildHeap(int[] arr) {
+		int n = getParentIndex(arr.length-1);
+		for (int i = n; i >= 0; i--) {
+			heapifyDown(arr, arr.length-i, i);
+		}
+		
+	}
+
+
+		// To heapify a subtree rooted with node i which is
 	// an index in arr[]. size is size of heap  max heap
 		static void  heapifyDown(int arr[], int size, int index){
 		while (hasLeftChild(index, size)) {

@@ -1,9 +1,6 @@
 package designpattern.designProblems;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.TreeSet;
-import java.util.Vector;
+import java.util.*;
 
 
 /*
@@ -15,12 +12,15 @@ import java.util.Vector;
 public class Test {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-	List<Integer> a = new Vector<Integer>();
-	
-	new TreeSet<>().pollFirst();
+
+		List<String> list = new ArrayList<>();
+
+
+
 
 	}
+
+
+
 
 }

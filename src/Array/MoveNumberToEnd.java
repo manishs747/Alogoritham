@@ -12,6 +12,20 @@ public class MoveNumberToEnd {
 		moveToEnd(arr);
 		Utility.print(arr);
 	}
+
+
+	public static void moveZeroes(int[] nums) {
+		int zp = 0;
+		for (int cp = 0; cp < nums.length; cp++) {
+			int current = nums[cp];
+			if (current != 0) {
+				nums[zp++] = current;
+			}
+		}
+		for (; zp < nums.length; zp++) {
+			nums[zp] = 0;
+		}
+	}
 	
 	
 	//move zero in front 

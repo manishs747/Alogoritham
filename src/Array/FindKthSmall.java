@@ -3,8 +3,6 @@ package Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import Utils.ArrayUtils;
-
 public class FindKthSmall {
 	
 	//https://www.hackerrank.com/contests/snapdeal-codesprint/challenges/kth-largest-smallest-number/problem

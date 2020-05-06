@@ -1,4 +1,4 @@
-package LinkList;
+package linklist;
 
 public class LinkOperation {
 	
@@ -85,5 +85,17 @@ public static Node creyateLinkList()  {
 	head = insertLinkListAtBegin(head, 2);
 	head = insertLinkListAtBegin(head, 1);
 	return  head;
+	}
+
+	public static Node createLinkListCustom(int [] arr)  {
+		Node head = null;
+		for (int i: arr) {
+			if(head == null){
+				head = new Node(i);
+			}else{
+				head = insertLinkListAtBegin(head, i);
+			}
+		}
+		return  head;
 	}
 }
