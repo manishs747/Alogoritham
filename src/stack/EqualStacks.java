@@ -1,14 +1,10 @@
 package stack;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
-
-import Array.Utility;
 
 /*
  *  https://www.hackerrank.com/challenges/equal-stacks?h_r=next-challenge&h_v=zen

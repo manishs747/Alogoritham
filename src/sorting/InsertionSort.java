@@ -3,7 +3,7 @@ package sorting;
 import java.util.Scanner;
 //https://www.hackerrank.com/challenges/insertionsort1
 
-import Array.Utility;
+import arrays.Utility;
 
 /*
  * 

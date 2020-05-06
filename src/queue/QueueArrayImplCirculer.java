@@ -2,7 +2,7 @@ package queue;
 
 import java.util.Arrays;
 
-import Array.Utility;
+import arrays.Utility;
 
 
 //https://www.geeksforgeeks.org/queue-set-1introduction-and-array-implementation/

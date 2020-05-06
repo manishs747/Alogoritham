@@ -2,8 +2,8 @@ package sorting;
 
 import java.util.Scanner;
 
-import Array.MoveNumberToEnd;
-import Array.Utility;
+import arrays.MoveNumberToEnd;
+import arrays.Utility;
 
 
 /*

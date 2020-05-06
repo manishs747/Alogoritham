@@ -2,7 +2,7 @@ package hackerrank.string;
 
 import java.util.Scanner;
 
-import Array.Utility;
+import arrays.Utility;
 
 
 /*

@@ -1,9 +1,6 @@
 package heap;
 
-import java.util.Arrays;
-
-import linklist.Node;
-import Array.Utility;
+import arrays.Utility;
 
 public class HeapSort {
 	
