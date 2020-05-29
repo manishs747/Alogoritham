@@ -1,7 +1,6 @@
 package designProblems.parkinlot;
 
 public class Level {
-	
 	private int floor;
 	private ParkingSpot[ ] spots;
 	private int availableSpots = 0; // number of free spots
@@ -27,5 +26,4 @@ public class Level {
 	public static int getSpotsPerRow() {
 		return SPOTS_PER_ROW;
 	}
-
 }
