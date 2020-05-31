@@ -36,8 +36,7 @@ public class SnakePupkin {
     //public void startGame(){...}
 
     public static void main(String[] args) {
-        designpattern.designProblems.codepumkin.SnakeNLadder s = new designpattern.designProblems.codepumkin.SnakeNLadder();
-        s.startGame();
+
     }
 
     public int calculatePlayerValue(int player, int diceValue)
