@@ -2,7 +2,6 @@ package stack;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.Stack;
 
 
@@ -39,10 +38,9 @@ NO
 
 public class BalancedBracket {
 	
-	 private static final Map<Character, Character> bracketMap;
+	 public static final Map<Character, Character> bracketMap = new HashMap<Character, Character>();
 	    static
 	    {
-	    	bracketMap = new HashMap<Character, Character>();
 	    	bracketMap.put('[', ']');
 	    	bracketMap.put('{', '}');
 	    	bracketMap.put('(', ')');
@@ -50,7 +48,7 @@ public class BalancedBracket {
 
 	public static void main(String[] args) {
 		
-		Scanner in = new Scanner(System.in);
+	/*	Scanner in = new Scanner(System.in);
 		int num = in.nextInt();
 		for (int i = 0; i < num; i++) {
 			String s = in.next();
@@ -60,7 +58,32 @@ public class BalancedBracket {
 				System.out.println("NO");
 			}
 		}
+		*/
+		String s = "([)]";
+		System.out.println(isValid(s));
 
+	}
+
+
+	/**
+	 *
+	 * @param s
+	 * @return
+	 *
+	 * https://leetcode.com/problems/valid-parentheses/
+	 */
+
+	public  static boolean isValid(String s) {
+		Stack<Character> stack = new Stack<>();
+		char[] carr = s.toCharArray();
+		for (char c:carr) {
+			if(bracketMap.containsKey(c)){
+				stack.push(bracketMap.get(c));
+			}else if(stack.isEmpty() || c != stack.pop()){
+				return false;
+			}
+		}
+		return stack.isEmpty();
 	}
 	
 	public static boolean isBalanced(String brc) {

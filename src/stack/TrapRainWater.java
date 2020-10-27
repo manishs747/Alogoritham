@@ -3,7 +3,7 @@ package stack;
 import java.util.Scanner;
 import java.util.Stack;
 
-import arrays.Utility;
+import data_structure.arrays.Utility;
 
 /*
  * 

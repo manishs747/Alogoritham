@@ -1,6 +1,3 @@
-import java.util.Scanner;
-
-
 public class Test {
 
 	public enum EntityType {
@@ -9,9 +6,22 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(EntityType.CATEGORY_BUYER_MAPPING.name());
+		//System.out.println(EntityType.CATEGORY_BUYER_MAPPING.name());
+
+		if("manish".equalsIgnoreCase(null)){
+
+		}else{
+			System.out.println("manish is not null");
+		}
 
 
 	}
+
+
+	public void isSubsequence(String s, String t) {
+
+	}
+
+
 
 }

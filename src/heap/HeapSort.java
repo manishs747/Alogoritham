@@ -1,6 +1,6 @@
 package heap;
 
-import arrays.Utility;
+import data_structure.arrays.Utility;
 
 public class HeapSort {
 	
