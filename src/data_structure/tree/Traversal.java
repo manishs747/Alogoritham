@@ -42,29 +42,9 @@ public class Traversal {
 	}
 	
 	
-	public static void printPreOrder(Node node) {
-		if(node==null){return;}
-		System.out.print( node.data  + " ");
-		printPreOrder(node.left);
-		printPreOrder(node.right);
-	}
+
 	
-	public static void printPreOrderIterative(Node root) {
-		if(root==null){
-			return;}
-		Stack<Node> stack = new Stack<Node>();
-		while(true){
-			while(root != null){
-				System.out.print( root.data  + " ");
-				stack.push(root);
-				root = root.left;
-			}
-			if(stack.isEmpty()){
-				break;
-			}
-			root = stack.pop().right;
-		}
-	}
+
 	
 	public static void printPostOrder(Node node) {
 		if(node==null){return;}

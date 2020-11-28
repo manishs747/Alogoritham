@@ -1,6 +1,7 @@
 package data_structure.tree.construction_convertion;
 
 
+import data_structure.tree.BTreePrinter;
 import data_structure.tree.Node;
 import data_structure.tree.TreeUtility;
 
@@ -23,9 +24,10 @@ public class Convertion {
 
 		/*int [] a= {1, 2, 2, 3, 1 ,2};
 		List<Integer> list = ArrayUtils.getListFromArr(a);*/
+		int [] arr = {-12,-10,-3,0,5,9,11};
+		BTreePrinter.printNode(sortedArrayToBST(arr));
 
-
-		filterNodeListByGroup(100);
+		//filterNodeListByGroup(100);
 
 	}
 
@@ -41,8 +43,21 @@ public class Convertion {
 	}
 
 
+     //https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+	 public static Node sortedArrayToBST(int[] nums) {
+		 return sortedArrayToBST(nums, 0, nums.length - 1);
+	 }
 
-
+	public static Node sortedArrayToBST(int[] nums, int start, int end) {
+		if (start > end) {
+			return null;
+		}
+		int mid = start + (end - start) / 2;
+		Node root = new Node(nums[start + mid]);
+		root.left = sortedArrayToBST(nums, start, mid - 1);
+		root.right = sortedArrayToBST(nums, mid + 1, end);
+		return root;
+	}
 
 
     /*
@@ -65,13 +80,7 @@ public class Convertion {
 	}
 
 
-	/*
-	  https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
-	 */
-	public Node sortedArrayToBST(int[] nums) {
 
-		return null;
-	}
 	
 	
 	

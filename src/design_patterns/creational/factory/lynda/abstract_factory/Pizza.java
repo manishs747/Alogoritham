@@ -20,7 +20,8 @@ public abstract class Pizza<Sauce, Cheese, Pepperoni, Clams> {
     }
     void setName(String name) { this.name = name;
     }
-    String getName() { return name;
+    String getName() {
+        return name;
     }
     public String toString() {
      return "Pizza";
