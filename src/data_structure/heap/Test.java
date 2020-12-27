@@ -1,4 +1,4 @@
-package heap;
+package data_structure.heap;
 /*
  * 
  https://www.youtube.com/watch?v=B7hVxCmfPtM

@@ -1,4 +1,8 @@
-package data_structure.tree;
+package data_structure.tree.traversal;
+
+import data_structure.tree.BTreePrinter;
+import data_structure.tree.Node;
+import data_structure.tree.TreeUtility;
 
 import java.util.*;
 
@@ -8,7 +12,8 @@ public class LevelOrder {
     public static void main(String[] args) {
         Node root = TreeUtility.getSampleBinarySearchTree();
         BTreePrinter.printNode(root);
-       System.out.println( averageOfLevelDoubleQueue(root));
+        BTreePrinter.printNode(connect(root));
+
     }
 
 
@@ -16,7 +21,7 @@ public class LevelOrder {
     //bfs
     public static void printLevelOrder(Node node) {
         if(node==null){return;}
-        Queue<Node> queue = new LinkedList<Node>();
+        Queue<Node> queue = new LinkedList<>();
         queue.add(node);
         while(!queue.isEmpty()){
             Node tempNode = queue.poll();
@@ -221,5 +226,41 @@ public static List<Double> averageOfLevelDFS(Node root) {
         }
         return result;
     }
+
+
+    public static Node connect(Node root){
+        if(root==null){
+            return null;
+        }
+        Queue<Node> queue = new LinkedList<Node>();
+        queue.add(root);
+        queue.add(null);
+        Node prev = null;
+        while(!queue.isEmpty()){
+            Node current  = queue.poll();
+            if(current == null){
+                if(queue.isEmpty()){
+                    break;
+                }
+                queue.add(null);
+                prev = null;
+            }else{
+                  if(null != prev){
+                      prev.next = current;
+                  }
+                 prev = current;
+                /*Enqueue left child */
+                if(current.left != null){
+                    queue.add(current.left);
+                }
+                /*Enqueue right child */
+                if(current.right!=null){
+                    queue.add(current.right);
+                }
+            }
+        }
+        return root;
+    }
+
 
 }

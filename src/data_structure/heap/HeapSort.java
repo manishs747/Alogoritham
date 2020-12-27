@@ -1,4 +1,4 @@
-package heap;
+package data_structure.heap;
 
 import data_structure.arrays.Utility;
 
@@ -15,12 +15,12 @@ public class HeapSort {
 	}
 	
 	
-	// main function to do heap sort
+	// main function to do data_structure.heap sort
 	static void heapSort(int arr[])
 	{
 		int length = arr.length;
 		int lastIndex = length - 1;
-		// Build heap (rearrange array)
+		// Build data_structure.heap (rearrange array)
 		buildHeap(arr);
 		//
 		System.out.println("Build Heap");
@@ -29,12 +29,12 @@ public class HeapSort {
 		for (int i = parentIndexLastNode; i >= 0; i--){
 			heapifyDown(arr, lastIndex, i);
 		}
-		// One by one extract an element from heap
+		// One by one extract an element from data_structure.heap
 		for (int i=lastIndex; i>=0; i--)
 		{
 		   // Move current root to end
 			swap(arr,0, i);
-			// call max heapify on the reduced heap
+			// call max heapify on the reduced data_structure.heap
 			heapifyDown(arr, i, 0);
 		}	
 	}
@@ -52,7 +52,7 @@ public class HeapSort {
 
 
 		// To heapify a subtree rooted with node i which is
-	// an index in arr[]. size is size of heap  max heap
+	// an index in arr[]. size is size of data_structure.heap  max data_structure.heap
 		static void  heapifyDown(int arr[], int size, int index){
 		while (hasLeftChild(index, size)) {
 			int biggerChildIndex = getLeftChildIndex(index);

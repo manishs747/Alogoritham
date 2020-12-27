@@ -7,7 +7,7 @@ public class Utility {
 			return;
 		}
 		while (head != null) {
-			System.out.print(head.data + " ->");
+			System.out.print(head.data + " ");
 			head = head.next;
 		}
 		System.out.println();

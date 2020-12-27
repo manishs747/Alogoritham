@@ -1,8 +1,11 @@
 package data_structure.tree.online;
 
 import data_structure.tree.Node;
+import data_structure.tree.NodeT;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /*
 
@@ -10,7 +13,7 @@ https://www.youtube.com/watch?v=i_Q0v_Ct5lY
 https://leetcode.com/problems/validate-binary-search-tree/
 
  */
-public class ValidBst {
+public class CheckBST {
 
     LinkedList<TreeNode> stack = new LinkedList();
     LinkedList<Integer> uppers = new LinkedList(),
@@ -37,25 +40,6 @@ public class ValidBst {
         return  isValidBST(root.left,start,root.data) && isValidBST(root.right,root.data,end);
     }
 
-
-
-
-    public boolean isValidBST(TreeNode root) {
-
-        return isValidBST(root,Long.MIN_VALUE,Long.MAX_VALUE);
-    }
-
-    public boolean isValidBST(TreeNode root,long start,long end) {
-        if(null == root){
-            return true;
-        }
-        if(root.val <= start || root.val >= end ){
-            return false;
-        }
-        return  isValidBST(root.left,start,root.val) && isValidBST(root.right,root.val,end);
-    }
-
-
     //iterative
     public void update(TreeNode root, Integer lower, Integer upper) {
         stack.add(root);
@@ -79,6 +63,48 @@ public class ValidBst {
             update(root.left, lower, val);
         }
         return true;
+    }
+
+
+    public static boolean checkBSTWithArray(NodeT node) {
+        List<Integer> list = new ArrayList<>();
+        checkBSTWithArrayInorder(node, list);
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i) <= list.get(i - 1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void checkBSTWithArrayInorder(NodeT<Integer> node,
+                                                List<Integer> list) {
+        if (node == null) {
+            return;
+        }
+        checkBSTWithArrayInorder(node.left, list);
+        list.add(node.data);
+        checkBSTWithArrayInorder(node.right, list);
+    }
+
+    public static int temp = Integer.MIN_VALUE;
+
+
+    //best solution
+    public static boolean checkBSTInorder(Node node) {
+        if (node == null) {
+            return true;
+        }
+        boolean state = checkBSTInorder(node.left);
+        if (state == false) {
+            return false;
+        }
+        if (node.data > temp) {
+            temp = node.data;
+        } else {
+            return false;
+        }
+        return checkBSTInorder(node.right);
     }
 
 

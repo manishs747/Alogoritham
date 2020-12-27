@@ -4,39 +4,68 @@ public class LinkListReverse {
 
 
 	public static void main(String[] args) {
-		Node list =  LinkOperation.createSampleList();
+		//Node list = LinkOperation.createSampleList();
+		Node list = new Node(3,new Node(5));
 		Utility.Print(list);
 		System.out.println("After Reverse");
 		//	Node revlist = reverseRecursive(list);
-		Node revlist = reverseRecursive(list,null);
+		Node revlist = reverseBetween(list,1,2);
 		Utility.Print(revlist);
 	}
-	
-	public static void ReversePrint(Node head) {
-		if (head == null) {
-			return;
-		}
-		System.out.println("Adding in stack:"+head.data);
-		ReversePrint(head.next);
-		System.out.println(head.data);
+
+
+
+	public static Node reverse(Node head){
+          Node prev =  null;
+          while(head != null){
+			  Node next = head.next;
+			  head.next = prev;
+			  prev = head;
+			  head = next;
+		  }
+		return prev;
 	}
-	
-	
-	public static Node reverseIterative(Node head){
-		if(head == null){
+
+
+	/*
+	https://leetcode.com/problems/reverse-linked-list-ii/
+	 */
+	public static Node reverseBetween(Node head,int m, int n){
+		if(head == null || head.next == null || m == n){
 			return head;
 		}
-		Node prev = null;
+		Node prev =  null;
+		int count = 1;
 		Node current = head;
+		Node first = null;
+		while (count < m && m != 1) {
+			first = current;
+			current = current.next;
+			count++;
+		};
+		Node second = current;
+		System.out.println("Current:"+current);
 		Node next = null;
-		while(current != null){
+		while(count <= n){
 			next = current.next;
 			current.next = prev;
 			prev = current;
-			current =  next;
+			current = next;
+			count++;
 		}
-		return prev;
+		Node result = head;
+		if(first != null){
+			first.next = prev;
+		}else {
+			result  = prev;
+		}
+		if(second != null){
+			second.next = next;
+		}
+		return result;
 	}
+
+
 	
 	public static Node recursiveHead;
 	

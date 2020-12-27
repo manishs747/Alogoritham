@@ -1,4 +1,4 @@
-package heap;
+package data_structure.heap;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -33,7 +33,7 @@ public class RunningMedian {
 	
 	
 	public static double[] getMedians(int [] arr){
-		//max heap
+		//max data_structure.heap
 		PriorityQueue<Integer> lowers = new PriorityQueue<Integer>(new Comparator<Integer>() {
 					public int compare(Integer a, Integer b) {
 						return -1*a.compareTo(b);}}

@@ -11,10 +11,38 @@ public class ReverseAtKOrder {
 		Node head = LinkOperation.createSampleList();
 		
 		ListUtility.display(head);
-		head = ReverseKiterative(head,3);
+		head = swapPairsRec(head);
 		ListUtility.display(head);
 		
 		
+	}
+
+
+	public static Node swapPairsRec(Node head) {
+		if (null == head || head.next == null) {
+			return head;
+		}
+		Node newHead = head.next;
+		Node next = head.next.next;
+		head.next.next = head;
+		head.next = swapPairsRec(next);
+		return newHead;
+	}
+
+
+	public static Node swapPairs(Node head) {
+		if (null == head || head.next == null) {
+			return head;
+		}
+		Node prev = head;
+		Node current = head.next;
+		while (current != null && current.next != null){
+            Node next = current.next;
+            prev.next = current;
+			current.next = prev;
+			current = next;
+		}
+		return head.next;
 	}
 	
 	 public static Node ReverseKiterative(Node head,int k)

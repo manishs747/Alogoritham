@@ -30,4 +30,37 @@ public class PeakElement {
 
             return 0;
     }
+
+
+
+
+
+    /*
+    https://leetcode.com/problems/valid-mountain-array/
+     */
+    public boolean validMountainArray(int[] arr) {
+        if (arr.length < 3) {
+            return false;
+        }
+        if(arr[1] < arr[0]){
+            return false;
+        }
+        boolean asc = true;
+        int prev = arr[1];
+        boolean change = false;
+        for (int i = 1;i< arr.length;i++){
+            int cur = arr[i];
+            if(prev == cur || (!asc && cur > prev)){
+                return false;
+            }
+            if(asc && cur < prev){
+                asc = false;
+                change =  true;
+            }
+            prev = cur;
+        }
+        return (!change || asc)?false:true;
+    }
+
+
 }

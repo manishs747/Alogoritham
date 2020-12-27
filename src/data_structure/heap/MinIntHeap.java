@@ -1,4 +1,4 @@
-package heap;
+package data_structure.heap;
 
 import java.util.Arrays;
 

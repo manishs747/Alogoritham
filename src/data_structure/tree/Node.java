@@ -6,7 +6,7 @@ package data_structure.tree;
 
  */
 public class Node {
-    public Node left, right;
+    public Node left, right ,next;
     public int data;
 
     public Node(int data) {

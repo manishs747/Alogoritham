@@ -186,6 +186,29 @@ public class TreeUtility {
 	  }
 	  
 	 }
+
+	public static void printNice(Node root)
+	{
+		if (root == null)
+			return;
+		else
+		{
+			System.out.print(root.data);
+			if (root.left != null)
+			{
+				System.out.print("L->[");
+				printNice(root.left);
+				System.out.print("]");
+			}
+			if (root.right != null)
+			{
+				System.out.print("R->[");
+				printNice(root.right);
+				System.out.print("]");
+			}
+		}
+
+	}
 	 
 
 
