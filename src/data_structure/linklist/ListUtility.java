@@ -1,55 +1,57 @@
 package data_structure.linklist;
 
-public class ListUtility
-{
-	
-	public static  <T> void display(NodeT<T> headNode){
-		/*	int length= 0;
-			Node currentNode = headNode;
-			while(currentNode!=null){
-				length++;
-				System.out.print(currentNode.data + " " );
-				currentNode=currentNode.next;
-				
-			}*/
-			for (NodeT currentNode = headNode;  currentNode!=null;currentNode=currentNode.next ) {
-				System.out.print(currentNode.getData() +" ");
-			}
-			System.out.println();
-		
-		}
-	
-	
-	
-	public static <T> int getListLength(NodeT<T> headNode){
-		int length= 0;
-		NodeT<T> currentNode = headNode;
-		while(currentNode!=null){
-			length++;
-			currentNode=currentNode.next;
-		}
-		return length;
+public class ListUtility {
+
+	public static void main(String[] args) {
+
 	}
-	
-	
-	public static void display(Node headNode){
-		
-		for (Node currentNode = headNode;  currentNode!=null;currentNode=currentNode.next ) {
-			System.out.print(currentNode.data +" " );
+
+	public static Node getSampleList(int [] arr){
+		if(null == arr || arr.length == 0){
+			return null;
 		}
-		System.out.println();
-	
-	}
-	
-	public static  int getListLength(Node headNode){
-		int length= 0;
-		Node currentNode = headNode;
-		while(currentNode!=null){
-			length++;
-			currentNode=currentNode.next;
+		Node head = new Node(arr[0]);
+		Node current = head;
+		for (int i = 1; i < arr.length ; i++) {
+			current.next = new Node(arr[i]);
+			current = current.next;
 		}
-		return length;
+		return head;
 	}
+
+
+
+    public static  int getListLength(Node headNode) {
+        int length = 0;
+        Node currentNode = headNode;
+        while (currentNode != null) {
+            length++;
+            currentNode = currentNode.next;
+        }
+        return length;
+    }
+
+
+    public static void display(Node headNode) {
+        for (Node currentNode = headNode; currentNode != null; currentNode = currentNode.next) {
+            System.out.print(currentNode.data + " ");
+        }
+        System.out.println();
+
+    }
+
+    public static void Print(Node head) {
+        if (head == null) {
+            return;
+        }
+        while (head != null) {
+            System.out.print(head.data + " ");
+            head = head.next;
+        }
+        System.out.println();
+    }
+
+
 
 
 }

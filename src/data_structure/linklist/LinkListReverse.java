@@ -6,11 +6,11 @@ public class LinkListReverse {
 	public static void main(String[] args) {
 		//Node list = LinkOperation.createSampleList();
 		Node list = new Node(3,new Node(5));
-		Utility.Print(list);
+		ListUtility.Print(list);
 		System.out.println("After Reverse");
 		//	Node revlist = reverseRecursive(list);
 		Node revlist = reverseBetween(list,1,2);
-		Utility.Print(revlist);
+		ListUtility.Print(revlist);
 	}
 
 

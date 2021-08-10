@@ -10,6 +10,7 @@ import java.util.Scanner;
  
  https://www.youtube.com/watch?v=VmogG01IjYc
  https://www.hackerrank.com/challenges/find-the-running-median/problem
+ https://leetcode.com/problems/find-median-from-data-stream/
  
  * 
  * 
@@ -51,7 +52,6 @@ public class RunningMedian {
 	
 	private static double getMedian(PriorityQueue<Integer> lowers,
 			PriorityQueue<Integer> highers) {
-		// TODO Auto-generated method stub
 		PriorityQueue<Integer> bigger = lowers.size() > highers.size() ? lowers : highers;
 		PriorityQueue<Integer> smaller = lowers.size() > highers.size() ? highers : lowers;
 		if(bigger.size() == smaller.size()){

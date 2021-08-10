@@ -21,7 +21,6 @@ public class UniquePossible {
     static void permute(char[] str, int l, int r,Set<String> set) {
         if (l == r) {
             set.add(new String(str));
-           // System.out.println(str);
             return;
         }
         for (int i = l; i <= r; i++) {

@@ -9,10 +9,12 @@ https://www.youtube.com/watch?v=3MwRGPPB4tw&list=PLOuZYwbmgZWXvkghUyMLdI90IwxbNC
 public class MakeAnagram {
 
     public static void main(String[] args) {
-        String s1 = "cde";
+        String s1 = "cab";
         String s2 = "abc";
 
-        System.out.println(makingAnagrams(s1,s2));
+       // System.out.println(isAnagram(s1,s2));
+
+
     }
 
     static int makingAnagrams(String s1, String s2) {
@@ -38,4 +40,23 @@ public class MakeAnagram {
         }
         return charCount;
     }
+
+/*
+    public static boolean isAnagram(String s, String t) {
+        Map<Character,Integer> map = new HashMap<>();
+        for (char c:s.toCharArray()) {
+           map.put(c,map.getOrDefault(c,0)+1);
+        }
+        for (char c:t.toCharArray()) {
+            if(!map.containsKey(c)){
+                return false;
+            }
+
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
+
+
+
+
+    }*/
 }

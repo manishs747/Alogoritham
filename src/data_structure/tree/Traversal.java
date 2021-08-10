@@ -14,6 +14,7 @@ public class Traversal {
 	public static void main(String[] args) {
 		 Node root = TreeUtility.getSampleBinarySearchTree();
 		 BTreePrinter.printNode(root);
+		 printPostOrder(root);
 	}
 	
 

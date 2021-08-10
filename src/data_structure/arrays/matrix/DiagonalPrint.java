@@ -1,34 +1,58 @@
 package data_structure.arrays.matrix;
 
+import data_structure.arrays.Utility;
+
 public class DiagonalPrint {
 
-	
+
+
+    public static void main(String[] args) {
+		int arr[][] = { {9, 8, 7},
+				{6, 5, 4},
+				{3, 2, 1}};
+		Utility.print(arr);
+		printDiagonalBottomUp(arr);
+
+    }
+
+
+    /*
+
+     Given matrix is
+        9	8	7
+        6	5	4
+        3	2	1
+
+
+		 9
+		 6 8
+		 3 5 7
+		 2 4
+		 1
+     */
+    public static void printDiagonalBottomUp(int[][] arr) {
+    	int R = arr.length;
+    	int C = arr[0].length;
+
+
+    }
+
 	/*
-	 * 
-	 * https://www.geeksforgeeks.org/zigzag-or-diagonal-traversal-of-matrix/
-	 
-	 Given matrix is
-    1     2     3     4
-    5     6     7     8
-    9    10    11    12
-   13    14    15    16
-   17    18    19    20
 
-Diagonal printing of matrix is
-    1
-    5     2
-    9     6     3
-   13    10     7     4
-   17    14    11     8
-   18    15    12
-   19    16
-   20
-	 
-	 
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	     Given matrix is
+        9	8	7
+        6	5	4
+        3	2	1
 
-	}
+       3
+       6 2
+       9 5 1
+       8 4
+       7
+   */
+    public static void printDiagonalBottomDown(int[][] arr) {
+
+    }
+
 
 }

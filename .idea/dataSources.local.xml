@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="IU-211.7142.45">
+    <data-source name="RMA_STG@DHONT55012US.HOMEOFFICE.WAL-MART.COM" uuid="88f009f2-2c29-4c60-b443-cd0e58a8efca">
+      <database-info product="Microsoft SQL Server" version="15.00.4123" jdbc-version="4.2" driver-name="Microsoft JDBC Driver 9.2 for SQL Server" driver-version="9.2.0.0" dbms="MSSQL" exact-version="15.0.4123" exact-driver-version="9.2">
+        <extra-name-characters>$#@</extra-name-characters>
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>rma_dbuser</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+  </component>
+</project>

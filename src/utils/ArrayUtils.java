@@ -15,6 +15,22 @@ public class ArrayUtils
 		System.out.println();
      }
 
+	public static void print(boolean[] ar) {
+		for(boolean n: ar){
+			System.out.print(n+" ");
+		}
+		System.out.println();
+	}
+
+	public static void print(int[][] array) {
+		for (int [] ar : array) {
+			for(int n: ar){
+				System.out.print(n+" ");
+			}
+			System.out.println();
+		}
+	}
+
 	public static void print(String[] ar) {
 		for(String n: ar){
 			System.out.println(n);

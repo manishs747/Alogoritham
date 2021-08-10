@@ -5,24 +5,18 @@ import java.util.concurrent.ExecutionException;
 public class LinkListT
 {
 	
-	public  static NodeT head=null;
+	public  static Node head=null;
 	
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
-		
-		
 		try {
 			creyateLinkList();
 			ListUtility.display(head);
 			head = rearrangeEvenOdd(head);
 			ListUtility.display(head);
 			//head=reverseLinkLISTREC(head);
-			
 			//head=reverseLinkListIterative(head);
 			//ListUtility.display(head);
-			
-			
-			
 		} catch (ExecutionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,15 +38,15 @@ public class LinkListT
 	}
 	
 	
-	public static <T>void insertLinkListAtBegin(T data) throws ExecutionException{
+	public static <T>void insertLinkListAtBegin(int data) throws ExecutionException{
 		
-		NodeT<T> nodeToInsert = new NodeT<T>(data, null);
+		Node nodeToInsert = new Node(data, null);
 		
 		if(head==null){
 			head=nodeToInsert;
 			return ;
 		}else{
-			nodeToInsert.setNode(head);
+			//nodeToInsert.setNode(head);
 			head = nodeToInsert;
 		}
 	}	
@@ -80,10 +74,8 @@ public class LinkListT
 			
 			//ListUtility.display(cur);
 			cur = next;
-		  //System.out.println(prev.data +" , "+cur.data+" , "+next.data);	
-		
+		  //System.out.println(prev.data +" , "+cur.data+" , "+next.data);
 			System.out.println();
-			
 		}
 		//ListUtility.display(cur);
 		 
@@ -91,17 +83,17 @@ public class LinkListT
 	}
 	
 	
-	public static <T> NodeT<T> rearrangeEvenOdd(NodeT<T> head){
+	public static  Node rearrangeEvenOdd(Node head){
 		
 		  // Corner case
 	    if (head == null)
 	        return head;
 	    
 	 // Initialize first nodes of even and odd lists
-	    NodeT<T> odd = head;
-	    NodeT<T> even = head.next;
+	    Node odd = head;
+	    Node even = head.next;
 	    
-	    NodeT<T> evenList = even;
+	    Node evenList = even;
 	    while(true){
 	    	
 	    	// If there are no more nodes, then connect
@@ -130,7 +122,5 @@ public class LinkListT
 	    }
 		return head;
 	}
-
-	
 
 }

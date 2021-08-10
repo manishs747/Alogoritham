@@ -1,7 +1,7 @@
 package data_structure.linklist.online;
 
+import data_structure.linklist.ListUtility;
 import data_structure.linklist.Node;
-import data_structure.linklist.Utility;
 
 public class MergeTwoSortedList {
 
@@ -31,17 +31,17 @@ public class MergeTwoSortedList {
     public static void main(String[] args) {
 
         Node list1 =  new Node(1,new Node(3,new Node(5)));
-        Utility.Print(list1);
+        ListUtility.Print(list1);
         Node list2 =  new Node(2,new Node(4,new Node(6)));
-        Utility.Print(list2);
-        Utility.Print( mergeLists(list1,list2));
+        ListUtility.Print(list2);
+        ListUtility.Print( mergeLists(list1,list2));
     }
 
 
     static Node mergeLists(Node head1, Node head2) {
         if (head1 == null) { return head2; }
         if (head2 == null) { return head1; }
-        Node head3 = null;
+        Node head3;
         if (head1.data <= head2.data) {
             head3 = head1;
             head1 = head1.next;

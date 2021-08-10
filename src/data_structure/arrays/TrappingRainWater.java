@@ -141,7 +141,6 @@ public class TrappingRainWater {
         for (int i = 0; i < right.length; i++) {
         	water += Math.min(left[i],right[i]);
 		}
-		
 		return water;
 	}
 	

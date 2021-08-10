@@ -1,5 +1,8 @@
 package data_structure.arrays;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class test {
 	
 /*
@@ -24,13 +27,33 @@ public class test {
 	
 	
 public static void main(String[] args) {
-  
-	String str = "leave   4";
-	
+
+	System.out.println(checkIfPangram("thequickbrownfoxjumpsoverthelazydog"));
 
 
 	
 }
+
+
+	public static boolean checkIfPangram(String sentence) {
+    if(null == sentence || sentence.length() < 26){
+    	return false;
+	}
+        Set<Integer> set = new HashSet<>();
+		for (int i =0;i<26;i++) {
+			set.add(97+i);
+		}
+		System.out.println(set);
+		for (char c : sentence.toCharArray()) {
+			int a = c;
+			set.remove(a);
+		}
+	   return set.isEmpty();
+	}
+
+
+
+
 
 private static void spiralPrint( int[][] arr) {
 	int R = arr.length;

@@ -25,24 +25,15 @@ public class RomanizerClass {
 	}
 	
 	public static void main(String[] args) {
-		
-	     for (int i = 1; i<= 100; i++) {
-		   //     System.out.println(i+"\t =\t "+toRoman(i));
-		    }
-		
-		 System.out.println(toRoman(96));
-	
-		
+		 System.out.println(toRoman(58));
 	}
 	
 	
 	public final static String toRoman(int number){
-		int l = map.floorKey(number);
-		System.out.println(l);
 		if(map.containsKey(number)){
 			return map.get(number);
 		}
-		//System.out.println(map.get(l));
+		int l = map.floorKey(number);
 		return map.get(l)+toRoman(number-l);
 	}
 	

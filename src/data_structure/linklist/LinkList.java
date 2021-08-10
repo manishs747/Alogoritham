@@ -1,6 +1,10 @@
 package data_structure.linklist;
 
 public class LinkList {
+
+	public static void main(String[] args) {
+
+	}
 	
 	private Node head;
 	
@@ -47,8 +51,6 @@ public class LinkList {
 	}
 	
 	
-	public static void main(String[] args) {
-		
-	}
+
 
 }

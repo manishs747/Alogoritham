@@ -38,4 +38,10 @@ public class LCA {
         }
         return lowestCommonAncestor(root.right,p,q);
     }
+
+    public TreeNode lowestCommonAncestorIterative(TreeNode root, TreeNode p, TreeNode q) {
+        while ((root.val - p.val) * (root.val - q.val) > 0)
+            root = p.val < root.val ? root.left : root.right;
+        return root;
+    }
 }
