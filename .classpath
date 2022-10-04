@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry excluding="designProblems/|designpattern/designProblems/chatserver/|designpattern/designProblems/chess/|designpattern/designProblems/copy/|designpattern/designProblems/jukebox/|designpattern/designProblems/parkinlot/|designpattern/designProblems/snakeladder/|designpattern/designProblems/vendingmachine/" kind="src" path="src"/>
