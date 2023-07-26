@@ -1,4 +1,7 @@
 # ignore all logs
 *.log
 .DS_Store
+bin/*
 
+/src/xml/
+/bin/

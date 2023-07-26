@@ -17,15 +17,12 @@ public class CountContruct {
     /**
      * @return returns the count of number of ways   to construct the word from dictionary
      * time = O(n*m *m)
-     * space(m)
+     * space(m2)
      */
     public static int countConstructTopDown(String s, List<String> wordDict, Map<String, Integer> memo) {
-        if (s.isEmpty()) {
-            return 1;
-        }
-        if (memo.containsKey(s)) {
+        if (s.isEmpty()) return 1;
+        if (memo.containsKey(s))
             return memo.get(s);
-        }
         int totalWays = 0;
         for (String word : wordDict) {
             if (s.startsWith(word)) {

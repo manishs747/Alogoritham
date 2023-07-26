@@ -20,18 +20,16 @@ public class fibonacci {
 	//O(2 e n) 2 to power n
 	//space complexity (n)
 	static int fib(int n){
-		if(n==0||n==1)
-			return n;
+		if(n==0||n==1) return n;
 		return fib(n-1)+fib(n-2);
 	}
 
 
-	//fib dynamic programing optimsed space used using recurssion   Top - Down Approach :
+	//fib dynamic programing optimsed space used recurssion   Top - Down Approach :
 	//Time Complexity: O(n)
 	// Extra Space: O(n)
 	static int fibDpTD(int n, int[] mem) {
-		if (n < 2)
-			return n;
+		if (n < 2) return n;
 		if (mem[n] == 0) {
 			mem[n] = fibDpTD(n - 1, mem) + fibDpTD(n - 2, mem);
 		}
@@ -54,15 +52,16 @@ public class fibonacci {
 	}
 	
 	//fib dynamic programing optimised space used using for loop
-	static int fibDpOS(int n){
-		int a = 0, b = 1, sum;
-		if(n==0||n==1)
+	static int fibDpOS(int n) {
+		if (n == 0 || n == 1)
 			return n;
-	    for (int i = 2; i < n+1; i++) {
-	    	sum = a + b;
+		int a = 0, b = 1, sum;
+		for (int i = 2; i < n + 1; i++) {
+			sum = a + b;
 			a = b;
 			b = sum;
 		}
 		return b;
 	}
+
 }

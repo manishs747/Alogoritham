@@ -12,7 +12,7 @@ public class SumEvenNumbersAfterQueries {
         int result [] = new int[nums.length];
         for (int num :nums) evenSum +=  num%2 == 0 ? num : 0;
         for (int [] arr : queries) {
-            nums[]
+
         }
         return null;
     }

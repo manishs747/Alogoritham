@@ -9,11 +9,18 @@ public class Path {
 		 root.left.left.right = new Node(9);
 			// TreeUtility.printNice(node);
 	     BTreePrinter.printNode(root);
-	    // Stack<Node> stack = new Stack<Node>();
-		//printRootToLeafPath(root );   //15
+
 		System.out.println(hasPathSum(root,15));
 		
 
+	}
+
+
+	//https://leetcode.com/problems/path-sum/
+	 public static boolean hasPathSum(Node root, int targetSum) {
+
+
+		return false;
 	}
 	
 	
@@ -56,11 +63,11 @@ public class Path {
 		
 		
 		//https://leetcode.com/problems/path-sum/submissions/
-		static boolean  hasPathSum(Node root, int sum) {
-			return hasPathHelper(root,0,sum);
+		static boolean  hasPathSumOld(Node root, int sum) {
+			return hasPathHelperOld(root,0,sum);
 		 }
 		
-		static boolean hasPathHelper(Node root, int ls , int sum) {
+		static boolean hasPathHelperOld(Node root, int ls , int sum) {
 			if(root == null) {
 				return false;
 			}
@@ -71,9 +78,9 @@ public class Path {
 					return true;
 				}
 			}
-			boolean result = hasPathHelper(root.left,ls,sum);
+			boolean result = hasPathHelperOld(root.left,ls,sum);
 			if (!result) {
-				result = hasPathHelper(root.right,ls,sum);
+				result = hasPathHelperOld(root.right,ls,sum);
 			}
 			ls = ls - root.data;
 			return result;

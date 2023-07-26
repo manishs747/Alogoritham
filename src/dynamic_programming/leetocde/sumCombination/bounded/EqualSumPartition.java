@@ -1,4 +1,4 @@
-package dynamic_programming.leetocde.subset;
+package dynamic_programming.leetocde.sumCombination.bounded;
 
 
 import java.util.Arrays;

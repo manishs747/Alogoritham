@@ -13,7 +13,9 @@ Negative Numbers are store in Two Complement form
  */
 public class TwoComplement {
 
-
+    public static void main(String[] args) {
+        System.out.println(~5);
+    }
 
 
 

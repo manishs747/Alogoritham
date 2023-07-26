@@ -1,5 +1,7 @@
-package dynamic_programming.leetocde;
+package dynamic_programming.knapsack;
 
+
+import java.util.Map;
 
 /**
  * https://www.geeksforgeeks.org/cutting-a-rod-dp-13/
@@ -7,7 +9,7 @@ package dynamic_programming.leetocde;
  * https://www.youtube.com/watch?v=IRwVmTmN6go&t=1s
  * https://www.educative.io/courses/dynamic-programming-in-python/xoG0Lmq84yn
  */
-public class RodCuttingMaxVal {
+public class RodCutting {
 
     public static void main(String[] args) {
         int arr[] = new int[]{1, 5, 8, 9, 10, 17, 17, 20};
@@ -20,19 +22,24 @@ public class RodCuttingMaxVal {
     }
 
     static int cutRod(int price[], int n, int[] memo) {
-        if (n <= 0) {
-            return 0;
-        }
-        if (memo[n] != 0) {
-            return memo[n];
-        }
+        if (n <= 0) return 0;
+        if (memo[n] != 0) return memo[n];
         int maxProfit = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
             maxProfit = Math.max(maxProfit, price[i] + cutRod(price, n - i - 1, memo));
-        }
         return memo[n] = maxProfit;
     }
 
+    private static int cutRodHelper(int[] price, int n, Map<Integer,Integer> memo) {
+        if(n <= 0) return 0;
+        if(memo.containsKey(n)) return memo.get(n);
+        int profit = 0;
+        for (int i = 1; i <= n; i++) {
+            profit = Math.max(profit, price[i-1]+cutRodHelper(price, n -i,memo));
+        }
+        memo.put(n,profit);
+        return profit;
+    }
 
     static int cutRodBottomUp(int price[], int n) {
         int [] memo = new int[n+1];

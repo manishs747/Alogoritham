@@ -8,6 +8,10 @@ package dynamic_programming.knapsack;
  * https://www.interviewbit.com/problems/0-1-knapsack/
  * https://www.youtube.com/watch?v=xCbYmUPvc2Q
  *
+ * https://www.youtube.com/watch?v=nLmhmB6NzcM
+ * https://www.youtube.com/watch?v=cJ21moQpofY
+ *
+ *
  * 
  * 
  * 
@@ -43,6 +47,7 @@ public class KnapsackProblem {
         }
         memo[index][capacity] = Math.max(profit, solveKnapsackTopDown(profits,weights,capacity,index+1,memo));
         return memo[index][capacity];
+
     }
 
     /******************************************BOTTOM UP************************************************************************/

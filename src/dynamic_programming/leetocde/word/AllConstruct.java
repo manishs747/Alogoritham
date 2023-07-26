@@ -8,7 +8,7 @@ public class AllConstruct {
         String s = "abcdef";
         List<String> wordDict = Arrays.asList("ab", "abc", "cd", "def", "abcd", "ef", "c");//2
         System.out.println(allConstructTopDown(s, wordDict, new HashMap<>()));
-        System.out.println(allConstructBottomUp(s, wordDict));
+       //  System.out.println(allConstructBottomUp(s, wordDict));
     }
 
     /**

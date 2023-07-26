@@ -12,7 +12,6 @@ public class TrappingRainWater {
    
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		int a[] = {2,1,3,1,2,2,1};
 		int a1[] = {0,1,0,2,1,0,1,3,2,1,2,1}; //return 6 
