@@ -13,8 +13,21 @@ public class BuySellStock1 {
     }
 
     public static int maxProfit(int[] prices) {
+        int max = Integer.MIN_VALUE, maxProfit = Integer.MIN_VALUE;
+        for (int i = prices.length - 1; i >= 0; i--) {
+            max = Math.max(max, prices[i]);
+            maxProfit = Math.max(maxProfit, max - prices[i]);
+        }
+        return maxProfit;
+    }
 
 
-        return -1;
+    public int maxProfit2(int[] prices) {
+        int profit = 0,min = Integer.MAX_VALUE;
+        for (int i : prices) {
+            min = Math.min(min, i);
+            profit = Math.max(profit, i-min);
+        }
+        return profit;
     }
 }

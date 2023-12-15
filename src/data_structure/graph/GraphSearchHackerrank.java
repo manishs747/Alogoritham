@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 
 //Hacker rank
-public class GraphSearch {
+public class GraphSearchHackerrank {
 
     private Node getNode(int id){
         return null;
@@ -20,10 +20,7 @@ public class GraphSearch {
     }
 
     public boolean hasPathDFS(int source,int destination){
-        Node s = getNode(source);
-        Node d = getNode(destination);
-        HashSet<Integer> visited = new HashSet<>();
-        return hasPathDFS(s,d,visited);
+        return hasPathDFS(getNode(source),getNode(destination),new HashSet<>());
     }
 
     private boolean hasPathDFS(Node s, Node d, HashSet<Integer> visited) {

@@ -38,13 +38,10 @@ public class SumPath2 {
     }
 
     public static void hasPathSum(TreeNode root, int sum, List<List<Integer>> list, Stack<Integer> stack) {
-        if (root == null) {
-            return;
-        }
+        if (root == null) return;
         stack.add(root.val);
         if (root.left == null && root.right == null && root.val == sum) {
-            List<Integer> pathList = new ArrayList<>();
-            stack.stream().forEach(s -> pathList.add(s));
+            List<Integer> pathList = new ArrayList<>(stack);
             list.add(pathList);
         }
         hasPathSum(root.left, sum - root.val, list, stack);

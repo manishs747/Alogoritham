@@ -29,31 +29,17 @@ public class CoinChangePossibleWays {
         return makeChange(c,n,0,new HashMap<>());
     }
 
-     public static long getWaysHelper(long money, List<Long> coins, int index, Map<String,Long> memo){
-         if (money ==0){
-             return 1;
-         }
-        if(money < 0 || index >= coins.size()){
-            return  0;
-        }
-        String key = index+"_"+money;
-        if(!memo.containsKey(key)){
-            memo.put(key,getWaysHelper(money,coins,index+1,memo) + getWaysHelper(money-coins.get(index),coins,index,memo));
-        }
-        return  memo.get(key);
-     }
+
+    /**
+     * Time(a*c) amount* number of coin
+     * Space(a*c)
+     */
 
     public static long makeChange( List<Long> coins, long money,int index, Map<String,Long> memo){
-        if (money ==0){
-            return 1;
-        }
-        if(index >= coins.size()){
-            return  0;
-        }
+        if (money == 0) return 1;
+        if(index >= coins.size()) return  0;
         String key = money+"_"+index;
-        if(memo.containsKey(key)){
-            return memo.get(key);
-        }
+        if(memo.containsKey(key)) return memo.get(key);
         long amountWithCoin = 0;
         long ways = 0;
         while(amountWithCoin <= money){
@@ -65,6 +51,21 @@ public class CoinChangePossibleWays {
         return ways;
     }
 
+
+    // this should not work as diff order is same
+    public static long getWaysHelper(long money, List<Long> coins, int index, Map<String,Long> memo){
+        if (money ==0){
+            return 1;
+        }
+        if(money < 0 || index >= coins.size()){
+            return  0;
+        }
+        String key = index+"_"+money;
+        if(!memo.containsKey(key)){
+            memo.put(key,getWaysHelper(money,coins,index+1,memo) + getWaysHelper(money-coins.get(index),coins,index,memo));
+        }
+        return  memo.get(key);
+    }
 
 
     /******************************************BOTTOM UP************************************************************************/

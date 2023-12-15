@@ -9,7 +9,7 @@ import java.util.*;
 public class WordBreak2 {
 
     public static void main(String[] args) {
-      /*  String s= "purple";
+      /* String s= "purple";
         List<String> wordDict = Arrays.asList("purp","p","ur","le","purpl");//2*/
         String s= "abcdef";
         List<String> wordDict = Arrays.asList("ab","abc","cd","def","abcd","ef","c");//2
@@ -26,18 +26,13 @@ public class WordBreak2 {
     }
 
     public static List<String> wordBreak(String s, List<String> wordDict, Map<String, List<String>> memo) {
-        if (s.isEmpty()) {
-            ArrayList<String> emptyWordList = new ArrayList<>();
-            emptyWordList.add("");
-            return emptyWordList;
-        }
-        if (memo.containsKey(s)) {
-            return memo.get(s);
-        }
+        if (s.isEmpty()) return Arrays.asList("");
+        if (memo.containsKey(s)) return memo.get(s);
         List<String> result = new ArrayList<>();
         for (String word : wordDict) {
             if (s.startsWith(word)) {
-                List<String> list = wordBreak(s.substring(word.length()), wordDict, memo);
+                String suffix = s.substring(word.length());
+                List<String> list = wordBreak(suffix, wordDict, memo);
                 for (String resultWord : list) {
                     resultWord = word + " " + resultWord;
                     result.add(resultWord.trim());

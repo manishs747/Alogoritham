@@ -28,7 +28,7 @@ public class HowSum {
         for (int candidate:candidates) {
             List<Integer> reminderWay = combinationSum(candidates, target - candidate,memo);
             if(reminderWay != null){
-                List<Integer> resultWay = new ArrayList(reminderWay);
+                List<Integer> resultWay = new ArrayList(reminderWay);//new array is created as reference is passed
                 resultWay.add(candidate);
                 memo.put(target,resultWay);
                 return resultWay;

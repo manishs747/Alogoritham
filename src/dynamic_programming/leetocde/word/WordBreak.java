@@ -14,8 +14,6 @@ public class WordBreak {
         String s = "purple";
         List<String> wordDict = Arrays.asList("purp", "p", "ur", "le", "purpl");//2
         System.out.println(wordBreakTopDown(s, wordDict));
-
-
     }
 
 
