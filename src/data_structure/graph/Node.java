@@ -4,9 +4,13 @@ import java.util.LinkedList;
 
 public class Node {
     private int id;
-    LinkedList<Node> adjacent = new LinkedList<>();
-    private Node(int id){
+    public LinkedList<Node> adjacent = new LinkedList<>();
+    public Node(int id){
         this.id = id;
+    }
+
+    public void addEdge(Node destination){
+        this.adjacent.add(destination);
     }
 
     public int getId(){

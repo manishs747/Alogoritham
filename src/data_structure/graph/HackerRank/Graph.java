@@ -1,5 +1,7 @@
 package data_structure.graph.HackerRank;
 
+import data_structure.graph.Node;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -7,25 +9,10 @@ import java.util.LinkedList;
 
 //https://leetcode.com/problems/find-if-path-exists-in-graph/
 public class Graph {
-
-    private HashMap<Integer,Node> nodeLookUp = new HashMap<Integer, Node>();
-
-    public static class Node{
-        private int id;
-        LinkedList<Node> adjacent = new LinkedList<>();
-        private Node(int id){
-            this.id = id;
-        }
-    }
-
+    private HashMap<Integer, Node> nodeLookUp = new HashMap<Integer, Node>();
 
     private Node getNode(int id){
         return nodeLookUp.get(id);
-    }
-
-    public void addEdge(int source,int destination){
-        Node s = getNode(source) , d = getNode(destination);
-        s.adjacent.add(d);
     }
 
     private boolean hasPathDFS(int source,int destination){
@@ -35,8 +22,8 @@ public class Graph {
     }
 
     private boolean hasPathDFS(Node s, Node d, HashSet<Integer> visited) {
-        if(visited.contains(s.id)) return false;
-        visited.add(s.id);
+        if(visited.contains(s.getId())) return false;
+        visited.add(s.getId());
         if (s ==  d) return true;
         for (Node child:s.adjacent)
           if( hasPathDFS(child,d,visited)) return true;
@@ -50,8 +37,8 @@ public class Graph {
         while (!nextToVisit.isEmpty()){
             Node s = nextToVisit.poll();
             if(s == destination) return true;
-            if(visited.contains(s.id)) continue;
-            visited.add(s.id);
+            if(visited.contains(s.getId())) continue;
+            visited.add(s.getId());
             for (Node child:s.adjacent){
                 nextToVisit.add(child);
             }
