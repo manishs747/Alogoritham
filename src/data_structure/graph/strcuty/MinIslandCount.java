@@ -1,6 +1,8 @@
 package data_structure.graph.strcuty;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MinIslandCount {
 
@@ -14,12 +16,39 @@ public class MinIslandCount {
                 }
                 ;
 
-        System.out.println(numIslands(grid));
+        List<List<String>> grid2 = List.of(
+                List.of("W", "L", "W", "W", "W"),
+                List.of("W", "L", "W", "W", "W"),
+                List.of("W", "W", "W", "L", "W"),
+                List.of("W", "W", "L", "L", "W"),
+                List.of("L", "W", "W", "L", "L"),
+                List.of("L", "L", "W", "W", "W")
+        );
+
+        //System.out.println(numIslands(grid));
+        System.out.println(minimumIsland(grid2));
+    }
+    public static int minimumIsland(List<List<String>> grid) {
+        int minCount = Integer.MAX_VALUE;
+        Set<String> visited = new HashSet<>();
+        for (int i = 0; i < grid.size() ; i++) {
+            for (int j = 0; j < grid.get(0).size(); j++){
+              int dfsCount = dfs1(grid,i,j,visited);
+              if(dfsCount != 0)
+                  minCount = Math.min(minCount,dfsCount);
+            }
+        }
+        return minCount;
+    }
+
+    private static int dfs1(List<List<String>> grid, int i, int j, Set<String> visited) {
+        if( i < 0 || i >= grid.size() || j < 0 || j >= grid.get(0).size() || grid.get(i).get(j).equals("W") || !visited.add(i+"_"+j)) return 0;
+        return 1 + dfs1(grid,i+1,j,visited)+dfs1(grid,i-1,j,visited)+dfs1(grid,i,j+1,visited)+dfs1(grid,i,j-1,visited);
     }
 
 
-
-    public static int minimumIsland(List<List<String>> grid) {
+    /*******************************************************************************************************/
+    public static int minimumIsland2(List<List<String>> grid) {
         char [][] gridArr = new char[grid.size()][grid.get(0).size()];
         for (int i = 0 ; i < grid.size() ;i++) {
             List<String> list = grid.get(i);

@@ -1,8 +1,10 @@
 package data_structure.graph.strcuty;
 
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 
 /**
  * Write a method, hasPath, that takes in an object representing the adjacency list of a directed acyclic graph and two nodes (src, dst). The method should return a boolean indicating whether or not
@@ -24,10 +26,31 @@ public class HasPath {
         System.out.println(hasPath(graph,"f","k"));
     }
 
+
+
+
+    public static boolean hasPathBFS(Map<String, List<String>> graph, String src, String dst) {
+       Queue<String> queue = new LinkedList<>();
+       queue.add(src);
+       while (!queue.isEmpty()){
+           String current = queue.poll();
+           if(current.equals(dst)) return true;
+           for (String child :graph.get(current)) {
+               queue.add(child);
+           }
+       }
+        return false;
+    }
+
+
+
+
+
     public static boolean hasPath(Map<String, List<String>> graph, String src, String dst) {
         if(src == dst) return true;
         for (String neighbour:graph.get(src)) {
-            if (hasPath(graph,neighbour,dst))return true;
+            if (hasPath(graph,neighbour,dst))
+                return true;
         }
         return false;
     }

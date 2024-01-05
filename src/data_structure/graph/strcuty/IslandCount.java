@@ -2,7 +2,9 @@ package data_structure.graph.strcuty;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * https://www.structy.net/problems/island-count
@@ -21,9 +23,60 @@ public class IslandCount {
                    }
            ;
 
-           System.out.println(numIslands(grid));
+        List<List<String>> grid2 = List.of(
+                List.of("W", "L", "W", "W", "W"),
+                List.of("W", "L", "W", "W", "W"),
+                List.of("W", "W", "W", "L", "W"),
+                List.of("W", "W", "L", "L", "W"),
+                List.of("L", "W", "W", "L", "L"),
+                List.of("L", "L", "W", "W", "W")
+        );
+
+           System.out.println(islandCount1(grid2));
+
+
     }
 
+
+
+    public static int islandCount1(List<List<String>> grid) {
+        int count = 0;
+        Set<String> visited = new HashSet<>();
+        for (int i = 0; i < grid.size();i++) {
+            for (int j = 0; j < grid.get(0).size(); j++) {
+               if(grid.get(i).get(j).equals("L")){
+                   if(dfs(grid,i,j,visited))
+                       count++;
+               }
+            }
+        }
+        return count;
+    }
+
+
+    public static boolean dfs(List<List<String>> grid,int i , int j,Set<String> visited){
+        if(i < 0 || j < 0 || i >= grid.size() || j >= grid.get(0).size() || grid.get(i).get(j).equals("W") || !visited.add(i+"_"+j) ) return false;
+        dfs(grid,i+1,j,visited);
+        dfs(grid,i-1,j,visited);
+        dfs(grid,i,j+1,visited);
+        dfs(grid,i,j-1,visited);
+        return true;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+/*****************************************************************************************************************************/
     public static int islandCount(List<List<String>> grid) {
         char [][] gridArr = new char[grid.size()][grid.get(0).size()];
         for (int i = 0 ; i < grid.size() ;i++) {

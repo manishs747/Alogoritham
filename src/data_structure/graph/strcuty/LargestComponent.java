@@ -15,53 +15,33 @@ public class LargestComponent {
                 3, List.of(2, 4),
                 4, List.of(3, 2)
         );
-        System.out.println(largestComponent(graph));
+        System.out.println(largestComponent3(graph));
     }
 
-    public static int largestComponent(Map<Integer, List<Integer>> graph) {
+
+    public static int largestComponent3(Map<Integer, List<Integer>> graph) {
         int max = 0;
-        Set<Integer> visited = new HashSet<>();
-        for (int current : graph.keySet()) {
-            if (!visited.contains(current)) {
-                max = Math.max(max, dfs(graph, current, visited));
-            }
-        }
+        Set<Integer> visted = new HashSet<>();
+        for (int key:graph.keySet())
+            max = Math.max(max,dfs3(graph,visted,key)) ;
         return max;
     }
 
-    private static int dfs(Map<Integer, List<Integer>> graph, int current, Set<Integer> visited) {
-        if (visited.contains(current)) return 0;
-        visited.add(current);
-        int count = 1; // Count the current node
-        for (int neighbor : graph.get(current)) {
-            count += dfs(graph, neighbor, visited);
-        }
+    private static int dfs3(Map<Integer, List<Integer>> graph, Set<Integer> visted, int key) {
+        if(visted.contains(key)) return 0;
+        visted.add(key);
+        int count = 1;
+        for (int neighbour:graph.get(key))
+            count += dfs3(graph,visted,neighbour);
         return count;
     }
 
 
-    /**************************************************************************************/
-    public static int largestComponent2(Map<Integer, List<Integer>> graph) {
-        int max = 0;
-        HashSet<Integer> visited = new HashSet<>();
-        for (int current : graph.keySet()) {
-            if(!visited.contains(current)){
-                max = Math.max(max, dfs2(graph,current,visited,0)) ;
-            }
-        }
-        return max;
-    }
 
-    private static int dfs2(Map<Integer, List<Integer>> graph, int current, HashSet<Integer> visited, int count) {
-        if(visited.contains(current)) return  0;
-        visited.add(current);
-        count++;
-        for (int neighbor :graph.get(current)){
-            if(!visited.contains(neighbor )){
-                count = dfs2(graph,neighbor ,visited,count);
-            }
-        }
-        return count;
-    }
+
+
+
+
+
 
 }
