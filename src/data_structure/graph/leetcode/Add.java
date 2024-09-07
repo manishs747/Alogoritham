@@ -3,13 +3,14 @@ package data_structure.graph.leetcode;
 public class Add {
 
     public static void main(String[] args) {
-        int a = 5;
-        int b = 2;
-        System.out.println(a+" + "+b+" = "+sum(a,b));
+        int num = 3;
+        String name = "nps";
+
+        for (int i = 0; i < num ; i++) {
+            System.out.println(name);
+        }
 
     }
 
-    public static int sum(int a ,int b){
-        return a+b;
-    }
+
 }

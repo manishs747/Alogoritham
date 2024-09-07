@@ -18,6 +18,30 @@ public class AllPathsFromSourceTarget {
         System.out.println(allPathsSourceTarget(graph));
     }
 
+
+    /*********************************************** BFS **************************************************************/
+    public List<List<Integer>> allPathsSourceTargetBFS(int[][] graph) {
+        List<List<Integer>> path = new ArrayList<>();
+        if(graph == null || graph.length == 0) return path;
+        Queue<List<Integer>> queue = new LinkedList<>();
+        queue.add(Arrays.asList(0));
+        while (!queue.isEmpty()){
+            List<Integer> current = queue.poll();
+            int lastElement = current.get(current.size()-1);
+            if(lastElement == graph.length-1){
+                path.add(new ArrayList<>(current));
+            }else{
+                for (int child:graph[lastElement]) {
+                    ArrayList<Integer> tmp = new ArrayList<>(current);
+                    tmp.add(child);
+                    queue.add(tmp);
+                }
+            }
+
+        }
+        return path;
+    }
+    /*********************************************** DFS **************************************************************/
     public static List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         List<Integer> path = new ArrayList<>();
         path.add(0);
@@ -37,4 +61,6 @@ public class AllPathsFromSourceTarget {
             path.remove(path.size()-1);
         }
     }
+
+    /*************************************************************************************************************/
 }

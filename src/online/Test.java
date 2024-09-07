@@ -7,32 +7,19 @@ public class Test {
     public static void main(String[] args) {
         int n = 3;
         int [][] edges = {{0,1},{1,2}};
-        System.out.println(findChampion(n,edges));
+        //doSomeThing();
+
     }
 
 
-    public long maximumScoreAfterOperations(int[][] edges, int[] values) {
-      return -1;
+    public static List<String> getStatusMessage(List<Integer> timestamps,List<String> messages,int k){
+
+
+
+    return null;
     }
 
 
-
-
-
-
-
-
-
-
-    //SImple Java Solution using set
-
-    public  static int findChampion(int n, int[][] edges) {
-          Set<Integer> set = new HashSet<>();
-          for (int i = 0; i < n ; i++) set.add(i);
-          for (int [] edge:edges) set.remove(edge[1]);
-          if(set.size() > 1) return -1;
-          return set.iterator().next();
-    }
 
 
 

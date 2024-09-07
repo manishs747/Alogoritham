@@ -1,4 +1,4 @@
-package dynamic_programming.coin;
+package dynamic_programming.leetocde.coin;
 
 import java.util.HashMap;
 import java.util.Map;

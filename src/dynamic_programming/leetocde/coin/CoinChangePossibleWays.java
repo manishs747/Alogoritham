@@ -1,4 +1,4 @@
-package dynamic_programming.coin;
+package dynamic_programming.leetocde.coin;
 
 import utils.ArrayUtils;
 
@@ -82,4 +82,37 @@ public class CoinChangePossibleWays {
         return  memo[amount];
     }
 
+    /*
+        https://leetcode.com/problems/coin-change/?envType=study-plan-v2&envId=top-interview-150
+         */
+    public static class CoinChangeMinCountUnlimited {
+
+        public static void main(String[] args) {
+        int [] coins = {1,2,5};
+        int amount = 11;
+            //Output: 3
+            //Explanation: 11 = 5 + 5 + 1
+            System.out.println(coinChange(coins,amount));
+        }
+
+
+        public static int coinChange(int[] coins, int amount) {
+            return coinChange(coins, amount,new HashMap<>());
+        }
+
+        private static int coinChange(int[] coins, int amount , Map<Integer,Integer> memo) {
+            if(amount == 0) return 0;
+            if(amount < 0) return -1;
+            if(memo.containsKey(amount)) return memo.get(amount);
+            int minCount = -1;
+            for (int cur : coins) {
+                int curCount = coinChange(coins, amount -cur,memo);
+                if(curCount > -1 && (minCount == -1 || curCount < minCount)){
+                    minCount = curCount +1;
+                }
+            }
+            memo.put(amount,minCount);
+            return minCount;
+        }
+    }
 }

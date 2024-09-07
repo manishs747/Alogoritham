@@ -1,13 +1,13 @@
 package dynamic_programming.leetocde;
 
+
+/**
+ * https://leetcode.com/problems/climbing-stairs/?envType=study-plan-v2&envId=top-interview-150
+ */
 public class ClimbingStairs {
 
     public static void main(String[] args) {
-        System.out.println(climbStairs(3));
-    }
-
-    public static int climbStairs(int n) {
-        return climbStairs(n,new int [n+1] );
+      //  System.out.println(climbStairs(3));
     }
 
     public static int climbStairs(int n,int memo []) {

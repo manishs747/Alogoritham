@@ -1,4 +1,4 @@
-package dynamic_programming.coin;
+package dynamic_programming.leetocde.coin;
 
 
 import java.util.Arrays;
@@ -19,15 +19,9 @@ public class CoinChangeMinNum {
     }
 
     public static int coinChange( int[] coins,int money, int [] memo){
-        if (money ==0){
-            return 0;
-        }
-        if(money < 0 ){
-            return  -1;
-        }
-        if(memo[money] != 0){
-            return memo[money];
-        }
+        if (money ==0) return 0;
+        if(money < 0 ) return  -1;
+        if(memo[money] != 0) return memo[money];
         int minCount = money+1;
         for (int coin:coins) {
             int c = coinChange(coins,money-coin,memo);

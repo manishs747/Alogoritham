@@ -1,12 +1,18 @@
 package data_structure.graph;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Node {
-    private int id;
-    public LinkedList<Node> adjacent = new LinkedList<>();
+    public int id;
+    public List<Node> adjacent = new LinkedList<>();
     public Node(int id){
         this.id = id;
+    }
+
+    public Node(int id, List<Node> adjacent){
+        this.id = id;
+        this.adjacent = adjacent;
     }
 
     public void addEdge(Node destination){

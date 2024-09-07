@@ -1,11 +1,13 @@
 package algorithams.backtracking.online;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * https://leetcode.com/problems/permutations/
+ * https://www.educative.io/courses/grokking-coding-interview-patterns-java/backtracking-introduction
+ * https://leetcode.com/problems/permutations/.
  */
 public class Permutations {
 
