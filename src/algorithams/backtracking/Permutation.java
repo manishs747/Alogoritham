@@ -5,9 +5,22 @@ public class Permutation {
     public static void main(String[] args) {
         String str = "ABC";
         char[] arr = str.toCharArray();
-        permute(arr, 0, str.length() - 1);
-
+        permuteNew(arr, 0);
+        //permute(arr,0,str.length()-1);
     }
+
+    static void permuteNew(char[] str, int start) {
+        if(start == str.length-1){
+            System.out.println(str);
+            return;
+        }
+        for (int i = start; i < str.length ; i++) {
+            swap(str,start,i);
+            permuteNew(str,start+1);
+            swap(str,start,i);
+        }
+    }
+
 
     static void permute(char[] str, int l, int r) {
         if (l == r) {
@@ -20,7 +33,6 @@ public class Permutation {
             swap(str, l, i);
         }
     }
-
 
     private static void swap(char[] str, int i, int j) {
         char tmp = str[i];

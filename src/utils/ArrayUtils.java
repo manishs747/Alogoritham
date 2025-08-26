@@ -31,6 +31,15 @@ public class ArrayUtils
 		}
 	}
 
+	public static void print(char[][] array) {
+		for (char [] ar : array) {
+			for(char n: ar){
+				System.out.print(n+" ");
+			}
+			System.out.println();
+		}
+	}
+
 	public static void print(String[] ar) {
 		for(String n: ar){
 			System.out.println(n);

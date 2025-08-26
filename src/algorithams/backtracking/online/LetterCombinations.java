@@ -1,7 +1,9 @@
 package algorithams.backtracking.online;
 
 import java.util.*;
-
+/**
+ * https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/
+ */
 public class LetterCombinations {
 
 
@@ -19,17 +21,17 @@ public class LetterCombinations {
     }
 
     public static void main(String[] args) {
-        System.out.println(letterCombinations("23"));
+        System.out.println(letterCombinationsBackTracking("23"));
     }
 
-    public static List<String> letterCombinations(String digits) {
+    public static List<String> letterCombinationsBackTracking(String digits) {
         ArrayList<String> result = new ArrayList<>();
-       letterCombinations(digits.toCharArray(),new StringBuilder(),result);
+       letterCombinationsBackTracking(digits.toCharArray(),new StringBuilder(),result);
        return result;
     }
 
 
-    public static void letterCombinations( char[] digits , StringBuilder path,ArrayList<String> result) {
+    public static void letterCombinationsBackTracking(char[] digits , StringBuilder path, ArrayList<String> result) {
         if(path.length() == digits.length){
             result.add(path.toString());
             return;
@@ -37,12 +39,12 @@ public class LetterCombinations {
         char next_digit =  digits[path.length()];
         for (char c:KEYBOARD.get(next_digit)) {
             path.append(c);
-            letterCombinations(digits,path,result);
+            letterCombinationsBackTracking(digits,path,result);
             path.deleteCharAt(path.length()-1);
         }
     }
 
-
+/****************************************DFS//cascading******************************************************************/
     public List<String> letterCombinations2(String digits) {
         if(digits.isEmpty()) return new ArrayList<>();
         return dfs2(digits, 0);

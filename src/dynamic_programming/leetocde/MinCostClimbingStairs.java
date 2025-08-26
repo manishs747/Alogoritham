@@ -13,21 +13,6 @@ public class MinCostClimbingStairs {
         System.out.println(minCostClimbingStairsTopDown(arr1));
     }
 
-    public static int minCostClimbingStairs(int[] cost) {
-        return minCostClimbingStairs(cost,0);
-    }
-
-    public static int minCostClimbingStairs(int[] cost,int index) {
-          if(index >= cost.length-1){
-             return  0;
-          }
-          int c1 = cost[index] + minCostClimbingStairs(cost,index+1);
-          int c2 = cost[index+1] + minCostClimbingStairs(cost,index+2); ;
-          int c = Math.min(c1,c2);
-        return c;
-    }
-
-
     public static int minCostClimbingStairsTopDown(int[] cost) {
         return minCostClimbingStairsTopDown(cost,0,new int[cost.length+1]);
     }

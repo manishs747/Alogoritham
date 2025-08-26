@@ -9,8 +9,34 @@ public class HowSum {
     public static void main(String[] args) {
         int [] arr = { 5,3,4,7};
         int target = 7;
-        System.out.println(combinationSum(arr,target,new HashMap<>()));
+        System.out.println(combinationSumNew(arr,target,new HashMap<>()));
     }
+
+
+
+
+
+    public static List<Integer> combinationSumNew(int[] candidates, int target ,  Map<Integer,List<Integer>> memo) {
+        if(target == 0) return new ArrayList<>();
+        if(target < 0) return null;
+        if(memo.containsKey(target)) return memo.get(target);
+        for (int num:candidates) {
+            List<Integer>  remainingList = combinationSumNew(candidates,target- num , memo);
+            if(remainingList != null){
+                memo.put(target, new ArrayList<>(remainingList) {{ add(num); }});
+                return memo.get(target);
+            }
+        }
+        memo.put(target,null);
+        return null;
+    }
+
+
+
+
+
+
+
 
 
     /**

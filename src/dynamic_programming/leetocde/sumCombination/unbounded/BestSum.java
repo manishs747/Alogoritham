@@ -14,6 +14,21 @@ public class BestSum {
     }
 
 
+    public static List<Integer> bestSum(int[] candidates, int target, Map<Integer,List<Integer>> memo) {
+        if(target == 0) return new ArrayList<>();
+        if(target < 0) return null;
+        if(memo.containsKey(target)) return memo.get(target);
+        List<Integer> bestSumWay = null;
+        for (int candidate:candidates) {
+            List<Integer> remainingBestWay =   bestSum(candidates,target-candidate,memo);
+            if(remainingBestWay != null && (bestSumWay == null || remainingBestWay.size() + 1 < bestSumWay.size() ))
+                    bestSumWay = new ArrayList<>(remainingBestWay){{add(candidate);}};
+        }
+        memo.put(target,bestSumWay);
+        return bestSumWay;
+    }
+
+
     /**
      * m = target len ,n = arr.length
      * O(n^m*m)  // time complexity
@@ -22,13 +37,13 @@ public class BestSum {
      *TIME:  O(n*m*m)  extra m is for copying array
      *space: O(m*m=m2)  memo taking space : m keys and each list of size m
      */
-    public static List<Integer> bestSum(int[] candidates, int target, Map<Integer,List<Integer>> memo) {
+    public static List<Integer> bestSum2(int[] candidates, int target, Map<Integer,List<Integer>> memo) {
         if(target == 0) return new ArrayList<>();
         if (target < 0) return null;
         if(memo.containsKey(target)) return memo.get(target);
         List<Integer> bestWays = null;
         for (int candidate : candidates) {
-            List<Integer> reminderWay = bestSum(candidates, target - candidate,memo);
+            List<Integer> reminderWay = bestSum2(candidates, target - candidate,memo);
             if(reminderWay != null){
                 List<Integer> resultWay = new ArrayList(reminderWay);
                 resultWay.add(candidate);

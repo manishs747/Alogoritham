@@ -1,0 +1,115 @@
+🎯 Sample Coding Problems
+1. Two-sum / Weighing pair
+“Given an array of weights and a target weight, check if any two values equal the target.”
+Classic two-pointer or hash map problem.
+
+2. Add large integers (strings)
+“Add two non-negative integers represented as strings (possibly with commas).”
+interviewkickstart.com
+
+Useful to simulate manual addition and handle edge cases—carries, different lengths, etc.
+
+3. Longest common substring
+“Given two strings, find the longest common substring.”
+interviewkickstart.com
+
+Often tackled with DP, suffix structures, or sliding windows.
+
+4. Graph connectivity / Strongly connected components
+“Check if a directed graph is strongly connected.”
+
+
+Check reachability from each node via DFS/BFS.
+
+5. Matrix jump game
+“Given a binary matrix, find the shortest path from top-left to bottom-right, where you can jump up to k steps in any direction, avoiding 1s.”
+
+
+A BFS + state management problem.
+
+6. String addition + Fibonacci follow-up
+Start by adding string numbers (possibly with commas), and extend to compute the nth Fibonacci number using that logic.
+reddit.com
+
+📋 SQL Rounds
+If your role touches data:
+
+Year-over-Year Growth Rate per product
+
+Monthly average ratings from review data
+
+Top-returned product per category — using joins, window functions, GROUP BY
+leetcode.com
++4
+leetcode.com
++4
+interviewkickstart.com
++4
+leetcode.com
++3
+datalemur.com
++3
+reddit.com
++3
+
+🌐 Wayfair Round Structure
+According to multiple sources, typical Wayfair interview rounds include:
+
+Online assessment (HackerRank or Karat): 2–3 DSA questions (easy-to-medium)
+leetcode.com
++15
+leetcode.com
++15
+medium.com
++15
+
+Coding round: 1–2 DSA problems + SQL
+
+Low‑Level Design (LLD): class structures & APIs (e.g., parking lot)
+medium.com
++1
+medium.com
++1
+
+High‑Level Design (HLD): scalable systems (e.g., music recommender)
+medium.com
+
+📝 Preparing for Wayfair
+Practice focus:
+
+DSA: arrays, strings, hash maps, graphs, DP
+
+Large-integer operations in strings
+
+Graph traversal & connectivity
+
+Matrix traversal with constraints
+
+SQL fundamentals: joins, window functions, grouping
+
+Design prep:
+
+LLD: well-defined class diagrams
+
+HLD: scalability, trade-offs, querying patterns
+
+✅ Summary Table
+Category	Sample Problem Types
+DSA	Two-sum; string addition; LCS; graph connectivity; matrix jumps
+SQL	YoY metrics; monthly averages; top-N per category
+LLD/HLD	Parking lot design; music recommender; API + DB schemas
+
+
+
+*****************************************************
+https://leetcode.com/problems/two-sum/
+https://www.geeksforgeeks.org/dsa/generate-a-matrix-with-mean-of-each-subarray-of-each-row-as-an-integer/
+
+Here are some sample Wayfair system design interview questions:
+
+Design an automated parking garage
+Design an app like Instagram
+Design TinyURL
+Design the database schema for an app like Netflix
+Design a rail and road network
+Design a database like IMDB

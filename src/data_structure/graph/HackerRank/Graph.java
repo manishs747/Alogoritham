@@ -42,7 +42,6 @@ public class Graph {
             for (Node child:s.adjacent){
                 nextToVisit.add(child);
             }
-
         }
         return false;
     }

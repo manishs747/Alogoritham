@@ -9,7 +9,7 @@ public class filereader {
 
     public static void main(String[] args) {
         // Define the directory to start the search
-        Path startDir = Paths.get("C:\\work_workspace\\postbill_July24\\.ev2\\ServiceGroupRoot\\Parameters\\Prod");
+        Path startDir = Paths.get("C:\\work_workspace\\postbill_July24\\.ev2\\ServiceGroupRoot\\Parameters\\USSec");
 
         //fileReader1(startDir);
         try (Stream<Path> stream = Files.walk(startDir)) {

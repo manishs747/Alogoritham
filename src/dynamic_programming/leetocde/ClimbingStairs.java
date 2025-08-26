@@ -7,8 +7,20 @@ package dynamic_programming.leetocde;
 public class ClimbingStairs {
 
     public static void main(String[] args) {
-      //  System.out.println(climbStairs(3));
+      System.out.println(climbStairsnew(3));
     }
+
+    public  static int climbStairsnew(int n){
+        return climbStairsnew(n, new Integer [n+1]);
+    }
+
+    public  static int climbStairsnew(int n,Integer [] memo) {
+      if(n == 0)  return 1;
+      if(n < 0) return 0;
+      if(memo[n] != null) return memo[n] ;
+      return memo[n] =climbStairsnew(n-1)+climbStairsnew(n-2);
+    }
+
 
     public static int climbStairs(int n,int memo []) {
        if (n < 0) return 0;

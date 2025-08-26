@@ -1,28 +1,35 @@
 package dynamic_programming.leetocde.sumCombination.unbounded;
 
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * https://leetcode.com/problems/coin-change/description/?envType=study-plan-v2&envId=top-interview-150
+ * https://www.structy.net/problems/sum-possible
+ */
 public class CanSum {
 
     public static void main(String[] args) {
         int [] arr = {3,4};
-        System.out.println(canSumTopDown(arr,10));
+        System.out.println(sumPossible(15 , Arrays.asList(3,4)));
     }
 
-
-    public static boolean canSumTopDown(int[] nums, int target) {
-        Boolean [] memo = new Boolean[target];
-        return canSumTopDownHelper(nums, target,memo);
+    public static boolean sumPossible(int amount, List<Integer> numbers) {
+       return sumPossible(amount,numbers,new Boolean[amount]);
     }
 
-    private static boolean canSumTopDownHelper(int[] nums, int target,Boolean [] memo) {
-        if(target < 0) return false;
-        if(target == 0 ) return true;
-        if(memo[target-1] != null)
-            return memo[target-1];
-        for (int n: nums)
-            if(canSumTopDownHelper(nums, target -n,memo))
-                return memo[target-1] = true;
-        return memo[target-1] = false;
+    public static boolean sumPossible(int amount, List<Integer> numbers , Boolean [] memo) {
+       if(amount == 0) return true;
+       if(amount < 0) return false;
+       if(memo[amount-1] != null) return memo[amount-1];
+       for (int num:numbers)
+           if(sumPossible(amount-num,numbers))
+               return memo[amount-1]=true;
+        return memo[amount-1]=false;
     }
+
 
 
     private static boolean canSumBottomUp(int[] nums, int target) {

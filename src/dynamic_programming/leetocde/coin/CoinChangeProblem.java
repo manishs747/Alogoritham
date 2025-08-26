@@ -1,6 +1,8 @@
 package dynamic_programming.leetocde.coin;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -31,37 +33,28 @@ import java.util.Map;
 public class CoinChangeProblem {
 
 	public static void main(String[] args) {
-
+		long [] coins = {1,2,5};
+		int amount = 3 ;
+		System.out.println(makeChange(coins,amount));
 	}
 
 	private static long makeChange(long [] coins, int money) {
 		return makeChange(coins, money,0,new HashMap<>());
 	}
-	
-	private static long makeChange(long [] coins,long money ,int index,Map<String,Long> memo){	
-		if(money == 0){
-			return 1;
-		 }
-		if(index >= coins.length){
-			return 0;
-		}
-		
+
+	private static long makeChange(long [] coins,long money ,int index,Map<String,Long> memo){
+		if(money == 0) return 1;
+		if(index >= coins.length) return 0;
 		String key = money+"_"+index;
-		if(memo.containsKey(key)){
-			return memo.get(key);
-		}
-		
-		long ways = 0;
-		long amountWithCoin = 0;
+		if(memo.containsKey(key)) return memo.get(key);
+		long ways = 0,amountWithCoin = 0;
 		while(amountWithCoin <= money){
-			long remainingMoney = money - amountWithCoin;
-			ways += makeChange(coins, remainingMoney,index+1,memo);
+			ways += makeChange(coins, money - amountWithCoin,index+1,memo);
 			amountWithCoin +=coins[index];
 		}
 		memo.put(key, ways);
 		return ways;
 	}
-
 
 
 	/***
@@ -93,11 +86,6 @@ public class CoinChangeProblem {
 		count[rem - 1] = (min == Integer.MAX_VALUE) ? -1 : min;
 		return count[rem - 1];
 	}
-	
-	
-	
-	
-	
-	
+
 
 }

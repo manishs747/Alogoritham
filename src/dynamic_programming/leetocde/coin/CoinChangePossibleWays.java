@@ -16,19 +16,35 @@ import java.util.Map;
 public class CoinChangePossibleWays {
 
     public static void main(String[] args) {
-        Long[] ca = {2L,5L,3L,6L};
+        Long[] ca = {1L,2L,3L};
         int [] can = {2,5,3,6};
         List<Long> list = Arrays.asList(ca);
-        System.out.println(getWays(10,list));
-        System.out.println(coinChangeBottomUp(can,10));
+        System.out.println(getWays(4,list));
+        //System.out.println(coinChangeBottomUp(can,10));
     }
 
-    /******************************************TOP DOWN************************************************************************/
+    /******************************************TOP DOWN NEW************************************************************************/
 
     public static long getWays(int n, List<Long> c) {
-        return makeChange(c,n,0,new HashMap<>());
+        return makeChangeNew(c,n,0,new HashMap<>());
     }
 
+    public static long makeChangeNew( List<Long> coins, long money,int index, Map<String,Long> memo){
+      if (money == 0) return 1;
+      if(index >= coins.size()) return 0;
+      String key = money+"_"+index;
+      if(memo.containsKey(key)) return memo.get(key);
+      long numberofWays = 0 ;
+      while (money >= 0){
+          numberofWays += makeChangeNew(coins,money,index+1,memo);
+          money -= coins.get(index);
+      }
+      memo.put(key,numberofWays);
+      return numberofWays;
+    }
+
+
+    /******************************************TOP DOWN************************************************************************/
 
     /**
      * Time(a*c) amount* number of coin

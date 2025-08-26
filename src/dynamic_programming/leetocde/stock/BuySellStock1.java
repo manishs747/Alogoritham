@@ -9,8 +9,28 @@ public class BuySellStock1 {
 
     public static void main(String[] args) {
         int prices[] = {7,1,5,3,6,4};
-        System.out.println(maxProfit(prices));
+        System.out.println(maxProfitNew(prices));
     }
+
+    public static int maxProfitNew(int[] prices) {
+      int maxProfit = 0,  min = prices[0];
+        for (int i = 1; i < prices.length; i++) {
+            maxProfit = Math.max(maxProfit,prices[i]-min);
+            min = Math.min(min,prices[i]);
+        }
+        return maxProfit;
+    }
+
+
+
+
+
+
+
+
+
+
+    
 
     public static int maxProfit(int[] prices) {
         int max = Integer.MIN_VALUE, maxProfit = Integer.MIN_VALUE;

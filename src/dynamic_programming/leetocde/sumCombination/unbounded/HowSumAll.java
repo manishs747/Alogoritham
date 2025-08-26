@@ -17,28 +17,36 @@ public class HowSumAll {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**********************************************************************************************************************/
+
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         return combinationSumHelper(candidates, target,new HashMap<>());
     }
 
     private static List<List<Integer>> combinationSumHelper(int[] candidates, int target, Map<Integer, List<List<Integer>>> memo) {
-        if(target == 0){
-            List<List<Integer>>  emptyList = new ArrayList<>();
-            emptyList.add(new ArrayList<>());
-            return emptyList;
-        }
-        if(target < 0) return null;
+        if(target == 0) return new ArrayList<>(){{add(new ArrayList<>());}};//new ArrayList<>(Arrays.asList(new ArrayList<>()));
+        if(target < 0) return new ArrayList<>();
         if(memo.containsKey(target)) return memo.get(target);
         List<List<Integer>> result = new ArrayList<>();
         for (int candidate: candidates) {
             List<List<Integer>> childrens = combinationSumHelper(candidates, target - candidate,memo);
-            if(childrens != null){
-                for (List<Integer> child :childrens) {
-                   List<Integer> localList = new ArrayList<>(Arrays.asList(candidate));
-                    localList.addAll(child);
-                    result.add(localList);
-                }
-            }
+            for (List<Integer> child :childrens)
+                result.add(new ArrayList<>(child){{add(candidate);}});
         }
         memo.put(target,result);
         return result;

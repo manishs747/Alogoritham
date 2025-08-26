@@ -16,10 +16,8 @@ public class CountingBits {
 
     public static int[] countBits(int n) {
          int result [] = new int[n+1];
-         int [] memo = new int[n+1];
-         for (int i = n;i >= 0;i--){
-             result[i] = countSetBits(i,memo);
-         }
+         for (int i = n;i >= 0;i--)
+             result[i] = countSetBitsRec(i,new int[n+1]);
         return result;
     }
 
@@ -40,14 +38,8 @@ public class CountingBits {
 
     static int countSetBitsRec(int n,int [] memo)
     {
-        System.out.println(n);
-        if(n == 0){
-            return 0;
-        }
-        if(memo[n]  != 0){
-            return memo[n];
-        }
-
+        if(n == 0) return 0;
+        if(memo[n]  != 0) return memo[n];
         return memo[n] = (n & 1) + countSetBitsRec(n >> 1,memo);
     }
 

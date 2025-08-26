@@ -4,6 +4,7 @@ package dynamic_programming.grid;
 /**
  * https://www.youtube.com/watch?v=P8Xa2BitN3I
  * https://www.geeksforgeeks.org/unique-paths-in-a-grid-with-obstacles/
+ * https://leetcode.com/problems/unique-paths-ii/
  */
 public class UniquePaths2 {
 
@@ -18,8 +19,7 @@ public class UniquePaths2 {
     static int countPath(int[][] grid,int row,int col,int [][] memo){
         if(!isValid(grid,row,col)) return 0; // base negative
         if(isAtEnd(grid,row,col)) return 1; // base positive
-        if(memo[row][col] == 0)
-            memo[row][col] = countPath(grid,row+1,col,memo) + countPath(grid,row,col+1,memo);
+        if(memo[row][col] == 0) memo[row][col] = countPath(grid,row+1,col,memo) + countPath(grid,row,col+1,memo);
         return memo[row][col];
     }
 
@@ -28,8 +28,7 @@ public class UniquePaths2 {
     }
 
     private static boolean isValid(int[][] grid, int row, int col) {
-        boolean result = row < grid.length && col < grid[0].length && grid[row][col] == 0;
-        return result;
+        return row < grid.length && col < grid[0].length && grid[row][col] == 0;
     }
 
 

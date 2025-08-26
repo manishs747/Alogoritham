@@ -23,12 +23,17 @@ public class HasPath {
                 "j", List.of("i"),
                 "k", List.of()
         );
-        System.out.println(hasPath(graph,"f","k"));
+        System.out.println(hasPathDFS(graph,"f","k"));
     }
 
-
-
-
+    public static boolean hasPathDFS(Map<String, List<String>> graph, String src, String dst) {
+        if(src == dst) return true;
+        for (String child:graph.get(src)) {
+           if(hasPathDFS(graph,child,dst)) return true;
+        }
+        return false;
+     }
+     
     public static boolean hasPathBFS(Map<String, List<String>> graph, String src, String dst) {
        Queue<String> queue = new LinkedList<>();
        queue.add(src);
@@ -42,16 +47,4 @@ public class HasPath {
         return false;
     }
 
-
-
-
-
-    public static boolean hasPath(Map<String, List<String>> graph, String src, String dst) {
-        if(src == dst) return true;
-        for (String neighbour:graph.get(src)) {
-            if (hasPath(graph,neighbour,dst))
-                return true;
-        }
-        return false;
-    }
 }

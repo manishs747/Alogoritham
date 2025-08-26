@@ -13,7 +13,7 @@ public class WordBreak {
         //  System.out.println(wordBreak(s,wordDict,new HashMap<>()));
         String s = "purple";
         List<String> wordDict = Arrays.asList("purp", "p", "ur", "le", "purpl");//2
-        System.out.println(wordBreakTopDown(s, wordDict));
+        System.out.println(wordBreakTopDown(s, wordDict,new HashMap<>()));
     }
 
 
