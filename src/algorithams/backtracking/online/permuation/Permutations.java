@@ -20,9 +20,48 @@ public class Permutations {
 
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
-        permute(nums,0,list);
+        permute2(nums,0,list);
         return list;
     }
+
+
+    public static void permute2(int[] nums, int index ,List<List<Integer>> memo ){
+            if(index == nums.length-1){
+                List<Integer> curr = new ArrayList<>();
+                for(int i:nums) curr.add(i);
+                memo.add(curr);
+                return;
+            }
+        for (int i = index; i < nums.length ; i++) {
+            swap(nums,index,i);
+            permute2(nums,index+1,memo);
+            swap(nums,index,i);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static void permute(int[] nums, int index ,List<List<Integer>> memo ){
         if(index == nums.length-1){

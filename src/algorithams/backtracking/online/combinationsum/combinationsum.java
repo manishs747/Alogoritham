@@ -13,7 +13,7 @@ public class combinationsum {
     public static void main(String[] args) {
        int [] candidates = {2,3,5};
        int target = 8;
-       System.out.println(combinationSumBacktrack(candidates,target));
+       System.out.println(combinationSum(candidates,target));
     }
 
 
@@ -43,11 +43,25 @@ public class combinationsum {
     }
 
 
+    private static void backtrack2(int[] candidates, int target, int index, List<Integer> current, List<List<Integer>> result) {
+        if(target == 0) {
+            result.add(new ArrayList<>(current));
+            return;
+        }
+        if( target <  0) return;
+        for (int i = index ; i <candidates.length ; i++) {
+            current.add(candidates[i]);
+            backtrack(candidates,target -candidates[i],i,current,result );
+            current.remove(current.size()-1);
+        }
+    }
+
+
 /*********************************************************************************************************************************/
 
 
     public static List<List<Integer>> combinationSum(int[] candidates, int target){
-        return  combinationSum(candidates,target);
+        return  combinationSum(candidates,target,0);
     }
 
     public static List<List<Integer>> combinationSum(int[] candidates, int target,int index) {

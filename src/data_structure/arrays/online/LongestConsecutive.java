@@ -12,8 +12,46 @@ public class LongestConsecutive {
 
     public static void main(String[] args) {
         int [] nums = {9,1,-3,2,4,8,3,-1,6,-2,-4,7};
-        System.out.println(longestConsecutive2(nums));
+        System.out.println(longestConsecutiveNew(nums));
     }
+
+
+
+
+    public static int longestConsecutiveNew(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int num:nums) set.add(num);
+        int maxSeq = 0;
+        for (int num:nums) {
+            int curNum = num;
+            int count = 0;
+            while (set.contains(curNum)){
+               // set.remove(curNum);
+                count++;
+                curNum++;
+            }
+            maxSeq = Math.max(maxSeq,count);
+        }
+        return maxSeq;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static int longestConsecutive(int[] nums) {
         Arrays.sort(nums);

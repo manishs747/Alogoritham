@@ -21,8 +21,45 @@ public class LetterCombinations {
     }
 
     public static void main(String[] args) {
-        System.out.println(letterCombinationsBackTracking("23"));
+        System.out.println(letterCombinationsBackTrackingNew("23"));
     }
+
+    public static List<String> letterCombinationsBackTrackingNew(String digits) {
+        List<String> result = new ArrayList<>();
+         backtrack(digits,0,new StringBuilder(),result);
+         return result;
+    }
+
+    private static void backtrack(String digits, int index, StringBuilder path ,List<String> result ) {
+        if(digits.isEmpty()) return;
+        if(digits.length() == index){
+            result.add(path.toString());
+            return;
+        }
+        char digit = digits.charAt(index);
+        for (char letter:KEYBOARD.get(digit)) {
+            path.append(letter);
+            backtrack(digits,index+1,path,result);
+            path.deleteCharAt(path.length()-1);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static List<String> letterCombinationsBackTracking(String digits) {
         ArrayList<String> result = new ArrayList<>();

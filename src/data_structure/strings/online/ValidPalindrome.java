@@ -1,13 +1,42 @@
 package data_structure.strings.online;
 
-
+//https://neetcode.io/problems/is-palindrome?list=neetcode150
 public class ValidPalindrome {
 
     public static void main(String[] args) {
-        String s = "cbbcc";
-        System.out.println(validPalindromeOneAllowed(s));
+        String s = ".,";
+        System.out.println(isPalindromenew(s));
 
     }
+
+
+
+
+
+
+
+    public static boolean isPalindromenew(String s) {
+        int start = 0 , end = s.length()-1;
+        while (start < end){
+            if (!Character.isLetterOrDigit(s.charAt(start))){
+                start++;
+                continue;
+            }
+            if (!Character.isLetterOrDigit(s.charAt(end))){
+                end--;
+                continue;
+            }
+            if(Character.toLowerCase(s.charAt(start++)) != Character.toLowerCase(s.charAt(end--))) return false;
+        }
+        return true;
+    }
+
+
+
+
+
+
+
 
 
     /**
