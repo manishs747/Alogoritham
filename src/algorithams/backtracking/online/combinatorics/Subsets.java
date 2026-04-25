@@ -4,10 +4,30 @@ package algorithams.backtracking.online.combinatorics;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * https://leetcode.com/problems/subsets/description/
  * https://www.educative.io/courses/grokking-coding-interview/introduction-to-subsets
  * https://www.youtube.com/watch?v=NA2Oj9xqaZQ&t=78s
+ *
+ * BackTrack
+ * include → recurse
+ * exclude → recurse
+ *
+ *                        []
+ *                   /            \
+ *             include 1        exclude 1
+ *                /                 \
+ *             [1]                  []
+ *            /   \               /    \
+ *    include2   exclude2   include2   exclude2
+ *       /           \         /           \
+ *   [1,2]        [1]       [2]            []
+ *     /   \      /   \     /   \         /   \
+ *  +3   -3   +3   -3  +3   -3     +3     -3
+ *   |     |    |     |    |      |       |     |
+ * [1,2,3][1,2][1,3] [1][2,3][2]   [3]     []
+ *
  *
  */
 public class Subsets {  //Order doesn't matter
@@ -62,7 +82,7 @@ public class Subsets {  //Order doesn't matter
 
     //***************************************************************Cascading Solution ******************************************
 
-    public static List<List<Integer>> subsetsRecursive(int[] nums) {
+    public static List<List<Integer>> subsetsCascadingRecursive1(int[] nums) {
         return subsetsRecursive(nums, 0);
     }
 
@@ -83,53 +103,45 @@ public class Subsets {  //Order doesn't matter
     }
 
 
-    public static List<List<Integer>> subsetRecursive2(int[] nums) {
+
+    public static List<List<Integer>> subsetCascadingRecursive2(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         result.add(new ArrayList<>());
-        subsetRecursive(nums,0,result);
-        return result;
+        buildSubsets(nums, 0, result);
+        return  result;
     }
 
-    public static void subsetRecursive(int[] nums , int index,List<List<Integer>> lists ) {
-        if(index >= nums.length)  return;
-        List<List<Integer>> subset = new ArrayList<>();
-        for (List<Integer> list : lists){
-            List<Integer> current = new ArrayList<>(list);
-            current.add(nums[index]);
-            subset.add(current);
+    private static void buildSubsets(int[] nums, int index, List<List<Integer>> result) {
+        if (index == nums.length) return;
+        int size = result.size();
+        for(int i=0;i<size;i++) {
+            List<Integer> newSubset = new ArrayList<>(result.get(i));
+            newSubset.add(nums[index]);
+            result.add(newSubset);
         }
-        lists.addAll(subset);
-        subsetRecursive(nums,index+1,lists);
+        buildSubsets(nums, index+1, result);
     }
+
 
     /**************************************************ITERATIVE******************************************************************/
 
 
-    public static List<List<Integer>> subsetsIterating1(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>(List.of(new ArrayList<>()));
+    public static List<List<Integer>> subsetCascadingIterative(int[] nums) {
+        List<List<Integer>> subsetList = new ArrayList<>();
+        subsetList.add(new ArrayList<>());
         for (int num : nums) {
-            int size = result.size();
-            for (int i = 0; i < size; i++) {
-                List<Integer> subset = new ArrayList<>(result.get(i));
-                subset.add(num);
-                result.add(subset);
+            int size = subsetList.size();
+            for  (int i=0;i < size;i++) {
+                List<Integer> newSubset = new ArrayList<>(subsetList.get(i));
+                newSubset.add(num);
+                subsetList.add(newSubset);
             }
         }
-        return result;
+        return subsetList;
     }
 
-    public static List<List<Integer>> subsetsIterating2(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>(List.of(new ArrayList<>()));
-        for (int num:nums) {
-            List<List<Integer>> temp = new ArrayList<>();
-            for (List<Integer> list : result){
-                List<Integer> current = new ArrayList<>(list);
-                current.add(num);
-                temp.add(current);
-            }
-            result.addAll(temp);
-        }
-        return result;
-    }
+
+
+
 }
 

@@ -1,9 +1,9 @@
-package design_problems.ratelimter;
+package design_problems.ratelimter.cgpt;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class TokenBucketRateLimiter implements RateLimiter{
+public class TokenBucketRateLimiter implements RateLimiter {
     private final Map<String, TokenBucket> userBuckets = new ConcurrentHashMap<>();
     private final RateLimiterConfig config;
 

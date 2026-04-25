@@ -13,20 +13,21 @@ public class combinationsum {
     public static void main(String[] args) {
        int [] candidates = {2,3,5};
        int target = 8;
-       System.out.println(combinationSum(candidates,target));
+       System.out.println(combinationSumBacktrack(candidates,target));
     }
 
 
-  /****************************************************************************************************************************************/
-
-
-
-
-
 /**********************************************************************************************************************************************/
+
+    // Complexity:  Exponential → O(2^T) because at every step you branch into “include” vs “exclude”, and depth can reach target T.
+   // Space Complexity:O(T) due to recursion depth (worst case picking 1 each time), plus output storage.
+
+
+
+
     public static List<List<Integer>> combinationSumBacktrack(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
-        backtrack(candidates, target, 0, new ArrayList<>(), result);
+        backtrack2(candidates, target, 0, new ArrayList<>(), result);
         return result;
     }
 
@@ -87,7 +88,7 @@ public class combinationsum {
 
 
 
-    //in this approch differnt order is also considered din solutions (not in current solution)
+    //in this approch differnt order is also considered dis solutions (not in current solution)
     public static List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> resultList = new ArrayList<>();
         if(target == 0) {
