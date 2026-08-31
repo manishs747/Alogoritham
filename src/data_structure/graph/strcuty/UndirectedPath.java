@@ -19,18 +19,15 @@ public class UndirectedPath {
 
     public static boolean undirectedPath(List<List<String>> edges, String nodeA, String nodeB) {
         Map<String, List<String>> map = Utility.getGraph(edges);
-        return undirectedPathHelperNew(map,nodeA,nodeB,new HashSet<>());
+        return dfs(map,nodeA,nodeB,new HashSet<>());
     }
 
-
-
-
-    public static boolean undirectedPathHelperNew(Map<String, List<String>> graph, String nodeA, String nodeB, HashSet<String> visited) {
+    public static boolean dfs(Map<String, List<String>> graph, String nodeA, String nodeB, HashSet<String> visited) {
         if(nodeA == nodeB) return true;
         if(visited. contains(nodeA)) return false;
         visited.add(nodeA);
         for (String child:graph.get(nodeA)) {
-           if(undirectedPathHelperNew(graph,child,nodeB,visited))return true;
+           if(dfs(graph,child,nodeB,visited))return true;
         }
         return false;
     }

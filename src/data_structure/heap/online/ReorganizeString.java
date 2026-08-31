@@ -36,15 +36,15 @@ public class ReorganizeString {
             char second = maxHeap.poll();
             sb.append(second);
             int firstCount = countMap.get(first) , secondCount = countMap.get(second);
-            if(firstCount > 1){
-                countMap.put(first,firstCount-1);
-                maxHeap.add(first);
-            }
-            if(secondCount > 1){
-                countMap.put(second,secondCount-1);
-                maxHeap.add(second);
-            }
+            if(firstCount > 1) add(countMap, first, firstCount, maxHeap);
+            if(secondCount > 1) add(countMap, second, secondCount, maxHeap);
+
         }
        return sb.toString();
+    }
+
+    private static void add(Map<Character, Integer> countMap, char c, int count, PriorityQueue<Character> maxHeap) {
+        countMap.put(c, count -1);
+        maxHeap.add(c);
     }
 }

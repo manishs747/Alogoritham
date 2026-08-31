@@ -1,57 +1,63 @@
 package data_structure.tries;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Trie {
-    private TrieNode root;
+
+
+
+    public static void main(String[] args) {
+      /*  Input
+                ["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
+[[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]
+        Output
+                [null, null, true, false, true, null, true]*/
+
+        Trie trie = new Trie();
+        trie.insert("apple");
+        System.out.println(trie.search("apple"));//true
+        System.out.println(trie.search("app"));//false
+        trie.insert("app");
+        System.out.println(trie.search("app"));//true
+    }
+
+    private class Node{
+        Map<Character,Node> childrens = new HashMap<>();
+        boolean isEndOfWord ;
+    }
+
+
+    private Node root;
+
     public Trie() {
-        root = new TrieNode();
+        this.root = new Node();
     }
-
-    public TrieNode getRoot(){
-        return root;
-    }
-
-
-    public void insertIterative(String word) {
-        TrieNode curNode = root;
-        for ( char ch:word.toCharArray()) {
-            curNode.children.putIfAbsent(ch,new TrieNode());
-            curNode = curNode.children.get(ch);
-        }
-        curNode.isEndOfWord = true;
-    }
-
 
     public void insert(String word) {
-        insert(word,0, root);
-    }
-    public void insert(String word ,int index , TrieNode node) {
-        if(index == word.length()) {
-            node.isEndOfWord = true;
-            return ;
+        Node cur = root;
+        for(char c : word.toCharArray()){
+           cur = cur.childrens.computeIfAbsent(c, k -> new Node());
         }
-        node.children.putIfAbsent(word.charAt(index),new TrieNode());
-        insert(word,index+1,node.children.get(word.charAt(index)));
+        cur.isEndOfWord = true;
     }
 
+
     public boolean search(String word) {
-        TrieNode current = root;
-        for (char ch:word.toCharArray()) {
-          if(!current.children.containsKey(ch))
-              return false;
-            current = current.children.get(ch);
+        Node cur = root;
+        for (char c : word.toCharArray()){
+            cur = cur.childrens.get(c);
+            if(cur == null) return false;
         }
-        return current.isEndOfWord;
+        return cur.isEndOfWord;
     }
 
     public boolean startsWith(String prefix) {
-        TrieNode current = root;
-        for (char ch:prefix.toCharArray()) {
-            if(!current.children.containsKey(ch))
-                return false;
-            current = current.children.get(ch);
+        Node cur = root;
+        for (char c : prefix.toCharArray()){
+            cur = cur.childrens.get(c);
+            if(cur == null) return false;
         }
         return true;
     }
-
-
 }

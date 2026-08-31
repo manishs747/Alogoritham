@@ -22,6 +22,29 @@ public class InsertInterval {
     }
 
 
+    public static int[][] insert3(int[][] intervals, int[] newInterval) {
+          List<int []> result = new ArrayList<>();
+          int i = 0 , N = intervals.length;
+          //before merge
+          while (i < N && intervals[i][1] < newInterval[0]){
+              result.add(intervals[i++]);
+          }
+
+          // Merge overlapping intervals
+           while (i < N &&  intervals[i][0] <= newInterval[1]){
+                 newInterval[0] = Math.min(newInterval[0],intervals[i][0]);
+                 newInterval[1] = Math.max(newInterval[1],intervals[i][1]);
+                 i++;
+           }
+           result.add(newInterval);
+
+           while (i < N){
+               result.add(intervals[i++]);
+           }
+        return result.toArray(new int[result.size()][]);
+    }
+
+
     public static int[][] insert(int[][] intervals, int[] newInterval) {
         List<int []> result = new ArrayList<>();
         boolean isMerged = false;

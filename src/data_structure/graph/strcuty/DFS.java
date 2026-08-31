@@ -43,22 +43,4 @@ public class DFS {
     }
 
 
-
-
-
-
-
-    public static void dfsIterative(Map<String, List<String>> graph,String source){
-           Stack<String> stack = new Stack<>();
-           stack.add(source);
-           while (!stack.isEmpty()){
-             String  current = stack.pop();
-             System.out.println(current);
-               for (String child:graph.get(current)) {
-                   stack.add(child);
-               }
-           }
-    }
-
-
 }
