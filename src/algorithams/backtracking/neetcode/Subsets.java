@@ -40,7 +40,6 @@ public class Subsets {
 
     private static void dfs2(int[] nums, int index, List<Integer> subset, List<List<Integer>> result) {
         result.add(new ArrayList<>(subset));
-        // Explore further by trying all possible next elements
         for (int i = index; i < nums.length; i++) {
             subset.add(nums[i]);
             dfs2(nums, i + 1, subset, result);  // move forward
